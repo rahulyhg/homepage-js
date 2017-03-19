@@ -1,0 +1,10 @@
+<div class="apod-title">{{vm.title}}</div>
+<div>
+  <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" ng-click="vm.toggleModal()"></img>
+  <apod-modal show="vm.modalShown">
+    <div class="apod-modal-date">{{vm.apod.date}}</div>
+    <div><img class="apod-picture-modal" ng-src="{{vm.apod.hdUrl}}"></img></div>
+    <div class="apod-description"><p>{{vm.apod.explanation}}</p></div>
+    <div class="apod-copyright"><p>hi! {{vm.apod.copyright}}</p></div>
+  </apod-modal>
+</div>

@@ -1,0 +1,63 @@
+input, button {
+  padding: 6px 10px;
+  margin: 5px 0px;
+}
+
+button::-moz-focus-inner {
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  border-width: 1px;
+}
+
+small {
+  font-size: 1em;
+  color: grey;
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#search-bar {
+  text-align: center;
+  width: 100%;
+  min-height: 5%;
+}
+
+#main-wrap {
+  width: 100%;
+  height: 95%;
+  float: left;
+  overflow: hidden;
+}
+
+#weather {
+  float: left;
+  width: 50%;
+  height: 50%;
+  background: #DDD;
+}
+
+#apod {
+  float: right;
+  width: 50%;
+  height: 50%;
+  background: #AAA;
+}
+
+#epic {
+  float: left;
+  width: 50%;
+  height: 50%;
+  background: #777;
+}
+
+#div4 {
+  float: right;
+  width: 50%;
+  height: 50%;
+  background: #444;
+}

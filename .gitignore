@@ -1,0 +1,8 @@
+api/vendor/
+api/.env
+api/.gitignore
+api/.git/
+frontend/node_modules/
+frontend/.gitignore
+frontend/.git/
+frontend/bundle.js
