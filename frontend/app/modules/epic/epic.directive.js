@@ -13,12 +13,26 @@ function epic() {
   }
 }
 
-epicController.$inject = [];
+epicController.$inject = ['$http', 'ApiService'];
 
-function epicController() {
+function epicController($http, ApiService) {
   var vm = this;
 
-  vm.message1 = "epic!!!";
+  vm.type = {};
+  // vm.type = 'natural';
+  vm.title = 'Recent EPIC Picture';
+
+  vm.toggleEpicModal = toggleEpicModal;
+  vm.epicModalShown = false;
+
+  function toggleEpicModal() {
+    vm.epicModalShown = !vm.epicModalShown;
+  }
+
+  ApiService.epic().then(function(response) {
+    vm.epic = response.data;
+    console.log(vm.epic);
+  });
 }
 
 export default angular.module('epic', [

@@ -1,10 +1,20 @@
 <div class="apod-title">{{vm.title}}</div>
-<div>
-  <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" ng-click="vm.toggleModal()"></img>
-  <apod-modal show="vm.modalShown">
-    <div class="apod-modal-date">{{vm.apod.date}}</div>
-    <div><img class="apod-picture-modal" ng-src="{{vm.apod.hdUrl}}"></img></div>
-    <div class="apod-description"><p>{{vm.apod.explanation}}</p></div>
-    <div class="apod-copyright"><p>hi! {{vm.apod.copyright}}</p></div>
-  </apod-modal>
+<div class="apod-picture-wrapper">
+  <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" ng-click="vm.toggleModal()" ng-show="vm.apod.imgUrl && !vm.apod.invalidVideo"></img>
+
+  <img class="apod-picture" ng-src="{{vm.apod.thumbUrl}}" ng-click="vm.toggleModal()" ng-show="vm.apod.thumbUrl && !vm.apod.invalidVideo"></img>
+
+  <p class="apod-invalid-video" ng-show="vm.apod.invalidVideo">Today's APOD is actually a video from an untrusted source. Please check back tomorrow!</p>
 </div>
+<apod-modal show="vm.modalShown">
+  <div class="apod-modal-date">{{vm.apod.date}}</div>
+  <div class="apod-modal-picture-wrapper">
+    <img class="apod-picture-modal" ng-src="{{vm.apod.hdUrl}}" ng-show="vm.apod.imgUrl"></img>
+    <div class="apod-description"><p>{{vm.apod.explanation}}</p></div>
+    <div class="apod-copyright" ng-show="vm.apod.copyright"><p>copyright: {{vm.apod.copyright}}</p></div>
+  </div>
+  <div class="apod-video-modal" ng-show="vm.apod.vidUrl">
+    <iframe ng-src="{{vm.apod.vidUrl}}" allowfullscreen frameborder="0"></iframe>
+  </div>
+
+</apod-modal>

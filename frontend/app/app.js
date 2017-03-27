@@ -11,7 +11,8 @@ import apod from './modules/apod/apod.module.js';
 import epic from './modules/epic/epic.module.js';
 import weather from './modules/weather/weather.module.js';
 
-import apodModal from './modals/apod.modal.module.js';
+import apodModal from './modals/apod/apod.modal.module.js';
+import epicModal from './modals/epic/epic.modal.module.js';
 
 import ApiService from './services/api.service.js';
 
@@ -25,9 +26,17 @@ angular.module('homepage', [
     epic,
     weather,
     apodModal,
+    epicModal,
     ApiService
 ])
-  .controller('homepageController', homepageController);
+  .controller('homepageController', homepageController)
+  .config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    "self",
+    "https://www.youtube.com/**",
+    "https://img.youtube.com/**"
+  ]);
+});
 
 function homepageController() {
 }

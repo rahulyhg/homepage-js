@@ -23,6 +23,7 @@ $api->version('v1', function ($api) {
 
       $api->get('test/', 'TestController@testMethod');
       $api->get('apod/', 'ApodController@getApod');
-
+      $api->get('epic/', 'EpicController@getEpic');
+      $api->get('weather/', 'WeatherController@getWeather');
     });
 });

@@ -13,6 +13,14 @@ function ApiService($http) {
     apod: () => {
       // return $http.get('http://homepage.app/api/v1/apod');
       return $http.get('http://192.168.0.30/api/v1/apod');
+    },
+    epic: () => {
+      // return $http.get('http://homepage.app/api/v1/apod');
+      return $http.get('http://192.168.0.30/api/v1/epic');
+    },
+    weather: () => {
+      // return $http.get('http://homepage.app/api/v1/apod');
+      return $http.get('http://192.168.0.30/api/v1/weather');
     }
   }
 }

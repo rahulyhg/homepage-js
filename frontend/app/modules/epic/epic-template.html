@@ -1,1 +1,13 @@
-    <p>{{vm.message1}}</p>
+<div class="epic-wrapper">
+  <div class="epic-title">{{vm.title}}</div>
+
+    <img class="epic-picture" ng-src="{{vm.epic.natImgUrl}}" ng-click="vm.toggleEpicModal()"></img>
+
+    <epic-modal show="vm.epicModalShown">
+      <div class="epic-modal-date">{{vm.epic.date}}</div>
+      <div class="epic-modal-picture-wrapper">
+        <img class="epic-picture-modal" ng-src="{{vm.epic.natImgUrl}}"></img>
+        <div class="epic-description"><p>{{vm.epic.caption}}.</p></div>
+      </div>      
+    </epic-modal>
+</div>

@@ -18,7 +18,7 @@ apodController.$inject = ['$http', 'ApiService'];
 function apodController($http, ApiService) {
   var vm = this;
 
-  vm.title = "Astronomy Picture of the Day";
+  vm.title = 'Astronomy Picture of the Day';
 
   vm.toggleModal = toggleModal;
   vm.modalShown = false;
@@ -30,6 +30,11 @@ function apodController($http, ApiService) {
   ApiService.apod().then(function(response) {
     vm.apod = response.data;
     console.log(vm.apod);
+
+    if (vm.apod.vidUrl) {
+      vm.title = 'Astronomy Video of the Day';
+    }
+
   });
 
 }

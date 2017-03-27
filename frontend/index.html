@@ -2,6 +2,7 @@
 <html lang="en" ng-app="homepage">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>homepage</title>
     <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
   </head>
@@ -9,11 +10,15 @@
   <body ng-controller="homepageController">
       <div id="search-bar"><search-bar></search-bar></div>
       <div id="main-wrap">
-        <div id="weather"><weather></weather></div>
+        <div id="epic">
+          <epic></epic>
+        </div>
         <div id="apod">
           <apod></apod>
         </div>
-        <div id="epic"><epic></epic></div>
+        <div id="weather">
+          <weather></weather>
+        </div>
         <div id="div4"><p>tbd</p></div>
       </div>
   </body>

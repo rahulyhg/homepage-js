@@ -1,4 +1,4 @@
-.apod-title {
+.epic-title {
   text-align: center;
   width: 100%;
   display: block;
@@ -7,42 +7,39 @@
   margin-left: 0;
   margin-right: 0;
   font-family: arial;
-
 }
 
-.apod-picture-wrapper {
-  width: 85%;
-  height: 85%;
-  margin: auto;
-  display: block;
-}
-
-.apod-picture {
-  margin: auto;
-  max-width: 100%;
-  max-height: 100%;
-  height: auto;
-  width: auto;
-  display: block;
-}
-
-
-.apod-modal-picture-wrapper {
+.epic-wrapper {
   width: 85%;
   margin: auto;
   display: block;
 }
 
-.apod-picture-modal {
-  max-width: 600px;
-  max-height: 60%;
+.epic-picture {
+  max-width: 300px;
+  max-height: 300px;
   margin: auto;
   width: 100%;
   height: auto;
   display: block;
 }
 
-.apod-video-modal {
+.epic-modal-picture-wrapper {
+  width: 85%;
+  margin: auto;
+  display: block;
+}
+
+.epic-picture-modal {
+  max-width: 600px;
+  max-height: 60%;
+  margin: 10px auto 30px auto;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.epic-video-modal {
   position: relative;
 	padding-bottom: 56.25%;
 	padding-top: 25px;
@@ -51,7 +48,7 @@
   margin: auto;
 }
 
-.apod-video-modal iframe {
+.epic-video-modal iframe {
   position: absolute;
 	top: 0;
 	left: 0;
@@ -59,28 +56,22 @@
 	height: 100%;
 }
 
-.apod-description {
+.epic-description {
   margin: 10px auto 10px auto;
   font-size: 14px;
   font-family: arial;
 }
 
-.apod-copyright {
+.epic-copyright {
   margin: 10px auto 10px auto;
   font-size: 12px;
   float: right;
   font-family: arial;
 }
 
-.apod-modal-date {
+.epic-modal-date {
   margin: 10px auto 10px auto;
   font-size: 14px;
   font-family: arial;
-  text-align: center;
-}
-
-.apod-invalid-video {
-  margin: 10px auto 10px auto;
-  font-size: 14px;
   text-align: center;
 }
