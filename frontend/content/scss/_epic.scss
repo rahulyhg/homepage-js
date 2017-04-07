@@ -9,18 +9,19 @@
   font-family: arial;
 }
 
-.epic-wrapper {
+.epic-picture-wrapper {
   width: 85%;
+  height: 79%;
   margin: auto;
   display: block;
 }
 
 .epic-picture {
-  max-width: 300px;
-  max-height: 300px;
   margin: auto;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
   height: auto;
+  width: auto;
   display: block;
 }
 

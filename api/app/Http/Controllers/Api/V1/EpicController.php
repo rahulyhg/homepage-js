@@ -53,7 +53,6 @@ class EpicController extends Controller
       $natImgMonth = substr($randNatImg, 12, 2);
       $natImgDay = substr($randNatImg, 14, 2);
 
-
       $randNatImgUrlFormat = '%s%s/%s/%s/jpg/%s.jpg';
       $randNatImgUrl = sprintf($randNatImgUrlFormat, $natImgBaseUrl, $natImgYear, $natImgMonth, $natImgDay, $randNatImg);
 
@@ -65,39 +64,6 @@ class EpicController extends Controller
 
       return $this->response()->array($natImg);
 
-      // try {
-      //   $natResponse = $client->request('GET', $natURL);
-      // } catch (\Exception $e) {
-      //   return "Error";
-      // }
-      //
-      // $natResponseData = json_decode($natResponse->getBody());
-      // var_dump($natResponseData);
-      //
-      // $natNo = sizeof($natResponseData);
-      // // var_dump($natNo);
-      //
-      // $randNatImgNo = rand(0, ($natNo - 1));
-      // // var_dump($randNatImgNo);
-      // // var_dump($natResponseData[$randNatImgNo]->image);
-      //
-      // $randNatImg = $natResponseData[$randNatImgNo]->image;
-      //
-      // // $randNatImg = 'epic_1b_20170318204348_02';
-      // // $randNatImg
-      // $natImgYear = substr($randNatImg, 8, 4);
-      // $natImgMonth = substr($randNatImg, 12, 2);
-      // $natImgDay = substr($randNatImg, 14, 2);
-      //
-      //
-      // $randNatImgUrlFormat = '%s%s/%s/%s/png/%s.png';
-      // $randNatImgUrl = sprintf($randNatImgUrlFormat, $natImgBaseUrl, $natImgYear, $natImgMonth, $natImgDay, $randNatImg);
-      // var_dump($randNatImgUrl);
-
-
-
-
     }
 
-    //
 }

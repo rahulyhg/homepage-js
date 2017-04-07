@@ -1,12 +1,12 @@
 <div class="apod-title">{{vm.title}}</div>
 <div class="apod-picture-wrapper">
-  <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" ng-click="vm.toggleModal()" ng-show="vm.apod.imgUrl && !vm.apod.invalidVideo"></img>
+  <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" ng-click="vm.toggleApodModal()" ng-show="vm.apod.imgUrl && !vm.apod.invalidVideo" ng-keydown="vm.spaceEnter($event)"></img>
 
-  <img class="apod-picture" ng-src="{{vm.apod.thumbUrl}}" ng-click="vm.toggleModal()" ng-show="vm.apod.thumbUrl && !vm.apod.invalidVideo"></img>
+  <img class="apod-picture" ng-src="{{vm.apod.thumbUrl}}" ng-click="vm.toggleApodModal()" ng-show="vm.apod.thumbUrl && !vm.apod.invalidVideo" ng-keydown="vm.spaceEnter($event)"></img>
 
   <p class="apod-invalid-video" ng-show="vm.apod.invalidVideo">Today's APOD is actually a video from an untrusted source. Please check back tomorrow!</p>
 </div>
-<apod-modal show="vm.modalShown">
+<apod-modal apod-modal-shown="vm.apodModalShown" apod-modal-focus="vm.apodModalFocus" apod-last-focus="vm.apodLastFocus">
   <div class="apod-modal-date">{{vm.apod.date}}</div>
   <div class="apod-modal-picture-wrapper">
     <img class="apod-picture-modal" ng-src="{{vm.apod.hdUrl}}" ng-show="vm.apod.imgUrl"></img>

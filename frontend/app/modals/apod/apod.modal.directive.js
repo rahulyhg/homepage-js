@@ -6,19 +6,15 @@ function apodModal() {
   return {
     restrict: 'E',
     bindToController: {
+      apodModalShown: '=',
+      apodModalFocus: '=',
+      apodLastFocus: '='
     },
-    scope: {
-      show: '='
-    },
+    scope: {},
     transclude: true,
     template: require('./apod.modal.html'),
     controller: apodModalController,
     controllerAs: 'vm',
-    link: function(scope) {
-      scope.hideModal = function() {
-        scope.show = false;
-      };
-    }
   }
 }
 
@@ -27,10 +23,19 @@ apodModalController.$inject = ['$scope'];
 function apodModalController($scope) {
   var vm = this;
 
-  vm.hideModal = hideModal;
+  vm.hideApodModal = hideApodModal;
+  vm.escape = escape;
 
-  function hideModal() {
-    vm.modalShown = false;
+  function hideApodModal() {
+    vm.apodModalShown = false;
+    vm.apodModalFocus = false;
+    vm.apodLastFocus.focus();
+  }
+
+  function escape($event) {
+    if (event.which === 27) {
+      vm.hideApodModal();
+    }
   }
 }
 

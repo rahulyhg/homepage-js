@@ -1,8 +1,8 @@
-<div class="modal" ng-show="show">
-  <div class="modal-overlay" ng-click="hideModal()">
-    <div class="modal-dialog">
-      <div class="modal-close" ng-click="hideModal()">X</div>
-      <div class="modal-content" ng-click="hideModal()" ng-transclude></div>
-    </div>
+<div class="modal" ng-show="vm.apodModalShown">
+  <div class="modal-dialog" ng-keydown="vm.escape($event)">
+    <button type="button" class="modal-close" aria-label="Close" ng-click="vm.hideApodModal()" focus-modal-close="vm.apodModalFocus" ng-keydown="vm.escape($event)">X</button>
+    <div class="modal-content" ng-transclude></div>
+  </div>
+  <div class="modal-overlay" ng-click="vm.hideApodModal()" ng-keydown="vm.escape($event)">
   </div>
 </div>

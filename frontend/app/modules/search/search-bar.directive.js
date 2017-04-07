@@ -13,8 +13,6 @@ function searchBar() {
   }
 }
 
-// searchController.$inject = [];
-
 function searchController() {
   var vm = this;
 

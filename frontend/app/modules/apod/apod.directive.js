@@ -13,18 +13,30 @@ function apod() {
   }
 }
 
-apodController.$inject = ['$http', 'ApiService'];
+// apodController.$inject = ['$http', 'ApiService'];
+apodController.$inject = ['ApiService'];
 
-function apodController($http, ApiService) {
+function apodController(ApiService) {
   var vm = this;
 
   vm.title = 'Astronomy Picture of the Day';
 
-  vm.toggleModal = toggleModal;
-  vm.modalShown = false;
+  vm.toggleApodModal = toggleApodModal;
+  vm.spaceEnter = spaceEnter;
+  vm.apodModalShown = false;
+  vm.apodModalFocus = false;
+  vm.apodLastFocus = {};
 
-  function toggleModal() {
-    vm.modalShown = !vm.modalShown;
+  function toggleApodModal() {
+    vm.apodModalShown = !vm.apodModalShown;
+    vm.apodModalFocus = !vm.apodModalFocus;
+    vm.apodLastFocus = document.activeElement;
+  }
+
+  function spaceEnter($event) {
+    if (event.which === 13 || event.which === 32) {
+      vm.toggleApodModal();
+    }
   }
 
   ApiService.apod().then(function(response) {

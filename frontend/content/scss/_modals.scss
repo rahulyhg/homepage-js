@@ -5,22 +5,23 @@
   transition: all 0.3s;
 }
 
+.modal {
+  overflow: auto;
+}
+
 .modal-dialog {
   position: absolute;
   z-index:10000;
   width: 80%;
-  // height: 95%;
   top: 5%;
   left: 10%;
   background: #fff;
   transition: all 0.3s;
-  overflow: auto;
 }
 
 .modal-overlay {
   z-index:9999;
-  position: absolute;
-  overflow: auto;
+  position: fixed;
   top:0;
   left:0;
   width:100%;

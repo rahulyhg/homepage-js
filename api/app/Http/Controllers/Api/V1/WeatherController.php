@@ -28,6 +28,8 @@ class WeatherController extends Controller
 
       $zipCode = $request->zip;
 
+      return $zipCode;
+
       $weather_api_key = $_ENV['WEATHER_API_KEY'];
 
       $weatherURL = 'https://api.nasa.gov/planetary/apod?api_key=' . $apod_api_key;

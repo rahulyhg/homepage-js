@@ -19,14 +19,24 @@ function epicController($http, ApiService) {
   var vm = this;
 
   vm.type = {};
-  // vm.type = 'natural';
   vm.title = 'Recent EPIC Picture';
 
   vm.toggleEpicModal = toggleEpicModal;
+  vm.spaceEnter = spaceEnter;
   vm.epicModalShown = false;
+  vm.epicModalFocus = false;
+  vm.epicLastFocus = {};
 
   function toggleEpicModal() {
     vm.epicModalShown = !vm.epicModalShown;
+    vm.epicModalFocus = !vm.epicModalFocus;
+    vm.epicLastFocus = document.activeElement;
+  }
+
+  function spaceEnter($event) {
+    if (event.which === 13 || event.which === 32) {
+      vm.toggleEpicModal();
+    }
   }
 
   ApiService.epic().then(function(response) {

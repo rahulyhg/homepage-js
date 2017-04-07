@@ -1,1 +1,49 @@
-    <p>{{vm.message1}}</p>
+<div id="weather-inner">
+  <div ng-show="vm.showWeather">
+    <p>Weather for {{vm.zipCode}} zip code.</p>
+    <p>Weather and stuff.</p>
+    {{vm.weather}}
+
+
+
+
+  </div>
+
+  {{vm.zipCodesList[0]}}
+
+  <div ng-show="vm.showInput">
+    <p>Local weather forecast!</p>
+    <form name="infoForm" ng-submit="vm.enterZipCode(infoForm)" novalidate>
+      <input type="number" name="zip" class="no-spinners" ng-model="vm.userInfo.zipCode" min="0" ng-minlength="5" ng-maxlength="5" placeholder="Enter zip code" required aria-required="true" tabIndex="0">
+
+      <button type="submit" tabIndex="0"><small>Submit Zip</small></button>
+
+      <div ng-messages="infoForm.$error" ng-if="infoForm.$submitted" role="alert">
+        <div ng-message="minlength || maxlength">
+          Incorrect number of zip code digits entered.
+        </div>
+        <div ng-message="required">
+          Required!
+        </div>
+        <div ng-message="number">
+          Please enter a number.
+        </div>
+        <div ng-message="min">
+          Please enter a positive number.
+        </div>
+      </div>
+
+    </form>
+
+    <!-- {{infoForm.$valid}}<br> -->
+    <!-- {{infoForm.$error}} -->
+
+    <!-- {{infoForm}} <br><br> -->
+    <!-- {{infoForm.$submitted}} <br><br> -->
+    <!-- {{infoForm.zip}} <br> -->
+    <!-- {{infoForm.zip.$modelValue}} <br> -->
+    <!-- {{infoForm.$valid}} <br> -->
+    <!-- {{vm.userInfo.zipCode}} <br> -->
+
+  </div>
+</div>

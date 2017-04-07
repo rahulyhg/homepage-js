@@ -1,7 +1,6 @@
 'use strict';
 
 import angular from 'angular';
-// import uiRouter from 'angular-ui-router';
 
 import apodModal from './apod.modal.directive.js';
 

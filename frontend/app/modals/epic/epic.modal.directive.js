@@ -6,19 +6,15 @@ function epicModal() {
   return {
     restrict: 'E',
     bindToController: {
+      epicModalShown: '=',
+      epicModalFocus: '=',
+      epicLastFocus: '='
     },
-    scope: {
-      show: '='
-    },
+    scope: {},
     transclude: true,
     template: require('./epic.modal.html'),
     controller: epicModalController,
     controllerAs: 'vm',
-    link: function(scope) {
-      scope.hideEpicModal = function() {
-        scope.show = false;
-      };
-    }
   }
 }
 
@@ -28,10 +24,20 @@ function epicModalController($scope) {
   var vm = this;
 
   vm.hideEpicModal = hideEpicModal;
+  vm.escape = escape;
 
   function hideEpicModal() {
     vm.epicModalShown = false;
+    vm.epicModalFocus = false;
+    vm.epicLastFocus.focus();
   }
+
+  function escape($event) {
+    if (event.which === 27) {
+      vm.hideEpicModal();
+    }
+  }
+
 }
 
 export default angular.module('epicModal', [
