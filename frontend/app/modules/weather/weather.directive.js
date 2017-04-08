@@ -18,14 +18,21 @@ weatherController.$inject = ['$cookies', 'ApiService', '$http'];
 function weatherController($cookies, ApiService, $http) {
   var vm = this;
 
-  vm.userInfo = {};
   vm.showInput = true;
   vm.showWeather = false;
   vm.enterZipCode = enterZipCode;
-  vm.zipCodesList = {};
 
   vm.zipCode = $cookies.get('zipCode');
-  // alert(vm.zipCode);
+
+  $http.get(`http://homepage.app:8080/app/modules/weather/zip-codes.json`).then(function(response) {
+    vm.zipCodesJson = response.data;
+  }).catch(function(e) {
+    console.log("Error: " + e);
+  });
+
+  if ((angular.equals({}, vm.zipCodesJson) )) {
+    return
+  }
 
   if (vm.zipCode) {
 
@@ -40,31 +47,44 @@ function weatherController($cookies, ApiService, $http) {
 
   }
 
-
-
   function enterZipCode(infoForm) {
-    if (infoForm.$valid) {
 
-      vm.zipCode = infoForm.zip.$modelValue;
-      // $cookies.put('zipCode', vm.userInfo.zipCode);
-      // console.log($cookies.get('zipCode'));
+    if (vm.userZipCode < 10000) {
+      vm.userZipCodeString = ("00000" + vm.userZipCode).slice(-5);
+      console.log(vm.userZipCodeString);
+    }
+
+    console.log(typeof(vm.userZipCodeString));
+
+    if (!vm.userZipCodeString) {
+      vm.userZipCodeString = vm.userZipCode.toString();
+      console.log(vm.userZipCodeString);
+    }
+
+    console.log(vm.zipCodesJson.indexOf(vm.userZipCodeString));
+
+    if (vm.zipCodesJson.indexOf(vm.userZipCodeString) > 0) {
+
+      $cookies.put('zipCode', vm.userZipCodeString);
+      console.log($cookies.get('zipCode'));
       vm.showInput = false;
       vm.showWeather = true;
 
-      ApiService.weather(vm.zipCode).then(function(response) {
+      ApiService.weather(vm.userZipCodeString).then(function(response) {
         vm.weather = response.data;
         console.log(vm.weather);
       });
     }
+
+    if (vm.zipCodesJson.indexOf(vm.userZipCodeString) == -1) {
+      vm.userZipCodeString = false;
+      vm.zipValue = infoForm.zip.$modelValue;
+      vm.zipError = true;
+    }
+
   }
 
-// vm.zipCode ? vm.zipCode = vm.zipCode : vm.zipCode = vm.defaultZipCode;
-
-  $http.get(`http://homepage.app:8080/app/modules/weather/zip-codes.json`).then(function(response) {
-    vm.zipCodesList = response.data;
-  });
-
-  }
+}
 
 export default angular.module('weather', [
   ])

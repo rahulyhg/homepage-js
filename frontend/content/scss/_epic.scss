@@ -2,17 +2,13 @@
   text-align: center;
   width: 100%;
   display: block;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  margin-left: 0;
-  margin-right: 0;
-  font-family: arial;
+  margin: 12px 0 12px 0;
 }
 
 .epic-picture-wrapper {
   width: 85%;
-  height: 79%;
-  margin: auto;
+  height: 75%;
+  margin: auto auto 7.5% auto;
   display: block;
 }
 
@@ -25,54 +21,33 @@
   display: block;
 }
 
-.epic-modal-picture-wrapper {
-  width: 85%;
+.epic-modal-date {
+  margin: 10px auto 10px auto;
+  font-size: 14px;
+  text-align: center;
+}
+
+.epic-modal-picture-wrapper-wrapper {
   margin: auto;
-  display: block;
+  width: 90%;
+}
+
+.epic-modal-picture-wrapper {
+  display: table;
+  margin: 0 auto 0 auto;
 }
 
 .epic-picture-modal {
   max-width: 600px;
   max-height: 60%;
-  margin: 10px auto 30px auto;
+  margin: auto;
   width: 100%;
   height: auto;
   display: block;
 }
 
-.epic-video-modal {
-  position: relative;
-	padding-bottom: 56.25%;
-	padding-top: 25px;
-	height: 0;
-  width: 85%;
-  margin: auto;
-}
-
-.epic-video-modal iframe {
-  position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
 .epic-description {
-  margin: 10px auto 10px auto;
   font-size: 14px;
-  font-family: arial;
-}
-
-.epic-copyright {
-  margin: 10px auto 10px auto;
-  font-size: 12px;
-  float: right;
-  font-family: arial;
-}
-
-.epic-modal-date {
-  margin: 10px auto 10px auto;
-  font-size: 14px;
-  font-family: arial;
-  text-align: center;
+  display: table-caption;
+  caption-side: bottom;
 }

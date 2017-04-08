@@ -16,7 +16,7 @@ function searchBar() {
 function searchController() {
   var vm = this;
 
-  vm.message1 = "Google Search";
+  vm.message1 = "Google";
 }
 
 export default angular.module('searchBar', [

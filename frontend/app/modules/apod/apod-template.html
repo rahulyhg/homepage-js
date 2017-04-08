@@ -8,10 +8,14 @@
 </div>
 <apod-modal apod-modal-shown="vm.apodModalShown" apod-modal-focus="vm.apodModalFocus" apod-last-focus="vm.apodLastFocus">
   <div class="apod-modal-date">{{vm.apod.date}}</div>
-  <div class="apod-modal-picture-wrapper">
-    <img class="apod-picture-modal" ng-src="{{vm.apod.hdUrl}}" ng-show="vm.apod.imgUrl"></img>
-    <div class="apod-description"><p>{{vm.apod.explanation}}</p></div>
-    <div class="apod-copyright" ng-show="vm.apod.copyright"><p>copyright: {{vm.apod.copyright}}</p></div>
+  <div class="apod-modal-picture-wrapper-wrapper">
+    <div class="apod-modal-picture-wrapper">
+      <img class="apod-picture-modal" ng-src="{{vm.apod.hdUrl}}" ng-show="vm.apod.imgUrl"></img>
+      <div class="apod-description">
+        <p>{{vm.apod.explanation}}</p>
+        <p>copyright: {{vm.apod.copyright}}</p>
+      </div>
+    </div>
   </div>
   <div class="apod-video-modal" ng-show="vm.apod.vidUrl">
     <iframe ng-src="{{vm.apod.vidUrl}}" allowfullscreen frameborder="0"></iframe>

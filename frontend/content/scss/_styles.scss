@@ -8,50 +8,48 @@ input, button {
 }
 
 small {
-  font-size: 1em;
-  color: grey;
+  font-size: 13px;
+  color: #000000;
 }
 
 html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  background-color: #cccccc;
+  background-color: $bg-color;
   overflow: auto;
+  font-family: arial;
 }
 
 .search-bar {
   text-align: center;
-  width: 100%;
-  min-height: 5%;
-  border-bottom: 1px solid black;
-}
-
-.main-wrap {
-  width: 100%;
-  height: 95%;
-  float: left;
-  overflow: hidden;
-}
-
-.weather {
-  float: left;
-  height: 50%;
-  overflow: hidden;
-  border-bottom: 1px solid black;
-}
-
-.apod {
-  float: left;
-  height: 45%;
-  border-bottom: 1px solid black;
+  // width: 100%;
+  // height: auto;
+  border-top: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
 }
 
 .epic {
   float: left;
-  height: 45%;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  // height: auto;
+  border: 1px solid $border-color;
+}
+
+.apod {
+  float: left;
+  // height: auto;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.weather {
+  float: left;
+  // height: auto;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
 }
 
 button::-moz-focus-inner {

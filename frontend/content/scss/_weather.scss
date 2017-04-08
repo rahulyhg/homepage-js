@@ -1,7 +1,33 @@
-#weather-inner .ng-hide-add {
+#weather-shown .ng-hide-remove {
+  animation: 0.75s slideInLeft ease;
+}
+
+#weather-input .ng-hide-add {
   animation: 0.25s lightSpeedOut ease;
 }
 
-#weather-inner  .ng-hide-remove {
-  animation: 0.75s slideInLeft ease;
+#weather-invalid-zip .ng-hide-add {
+  animation: 0.25s lightSpeedOut ease;
+}
+
+#weather-invalid-zip .ng-hide-remove {
+  animation: 0.5s pulse ease;
+}
+
+#weather-invalid-zip {
+  text-align: center;
+  font-size: 12px;
+  color: $error-text-color;
+}
+
+.weather-error {
+  font-size: 12px;
+  color: $error-text-color;
+}
+
+.weather-title {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: 12px 0 12px 0;
 }

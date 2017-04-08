@@ -2,17 +2,13 @@
   text-align: center;
   width: 100%;
   display: block;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  margin-left: 0;
-  margin-right: 0;
-  font-family: arial;
+  margin: 12px 0 12px 0;
 }
 
 .apod-picture-wrapper {
   width: 85%;
-  height: 79%;
-  margin: auto;
+  height: 75%;
+  margin: auto auto 7.5% auto;
   display: block;
 }
 
@@ -25,11 +21,14 @@
   display: block;
 }
 
+.apod-modal-picture-wrapper-wrapper {
+  margin: auto;
+  width: 90%;
+}
 
 .apod-modal-picture-wrapper {
-  width: 85%;
-  margin: auto;
-  display: block;
+  display: table;
+  margin: 0 auto 0 auto;
 }
 
 .apod-picture-modal {
@@ -59,22 +58,22 @@
 }
 
 .apod-description {
-  margin: 10px auto 10px auto;
   font-size: 14px;
-  font-family: arial;
+  display: table-caption;
+  caption-side: bottom;
 }
 
 .apod-copyright {
-  margin: 10px auto 10px auto;
+  margin: auto;
   font-size: 12px;
-  float: right;
-  font-family: arial;
+  display: table-caption;
+  caption-side: bottom;
+  text-align: right;
 }
 
 .apod-modal-date {
   margin: 10px auto 10px auto;
   font-size: 14px;
-  font-family: arial;
   text-align: center;
 }
 
@@ -82,4 +81,8 @@
   margin: 10px auto 10px auto;
   font-size: 14px;
   text-align: center;
+}
+
+.apod-description p+p {
+  text-align: right;
 }
