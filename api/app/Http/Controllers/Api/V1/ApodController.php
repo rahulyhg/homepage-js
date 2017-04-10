@@ -27,10 +27,10 @@ class ApodController extends Controller
       $client = new Client();
 
       $apod_api_key = $_ENV['APOD_API_KEY'];
-      $apodURL = 'https://api.nasa.gov/planetary/apod?api_key=' . $apod_api_key;
+      $apodUrl = 'https://api.nasa.gov/planetary/apod?api_key=' . $apod_api_key;
 
       try {
-        $response = $client->request('GET', $apodURL);
+        $response = $client->request('GET', $apodUrl);
       } catch (\Exception $e) {
         return "Error";
       }

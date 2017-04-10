@@ -26,8 +26,8 @@ class EpicController extends Controller
 
       $client = new Client();
 
-      $natURL = 'https://epic.gsfc.nasa.gov/api/natural/';
-      $enhURL = 'https://epic.gsfc.nasa.gov/api/enhanced/';
+      $natUrl = 'https://epic.gsfc.nasa.gov/api/natural/';
+      $enhUrl = 'https://epic.gsfc.nasa.gov/api/enhanced/';
 
       $natImgBaseUrl = 'https://epic.gsfc.nasa.gov/archive/natural/';
       $enhImgBaseUrl = 'https://epic.gsfc.nasa.gov/archive/enhanced/';
@@ -36,7 +36,7 @@ class EpicController extends Controller
       // enhanced: https://epic.gsfc.nasa.gov/archive/enhanced/2015/10/31/png/epic_RGB_20151031003633_01.png
 
       try {
-        $natResponse = $client->request('GET', $natURL);
+        $natResponse = $client->request('GET', $natUrl);
       } catch (\Exception $e) {
         return "Error";
       }

@@ -13,7 +13,7 @@
       <img class="apod-picture-modal" ng-src="{{vm.apod.hdUrl}}" ng-show="vm.apod.imgUrl"></img>
       <div class="apod-description">
         <p>{{vm.apod.explanation}}</p>
-        <p>copyright: {{vm.apod.copyright}}</p>
+        <p ng-show="vm.apod.copyright">copyright: {{vm.apod.copyright}}</p>
       </div>
     </div>
   </div>

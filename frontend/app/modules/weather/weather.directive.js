@@ -13,18 +13,18 @@ function weather() {
   }
 }
 
-weatherController.$inject = ['$cookies', 'ApiService', '$http'];
+weatherController.$inject = ['$cookies', 'ApiService', '$http', 'AppConstants'];
 
-function weatherController($cookies, ApiService, $http) {
+function weatherController($cookies, ApiService, $http, AppConstants) {
   var vm = this;
 
   vm.showInput = true;
   vm.showWeather = false;
   vm.enterZipCode = enterZipCode;
 
-  vm.zipCode = $cookies.get('zipCode');
+  vm.cachedZipCode = $cookies.get('zipCode');
 
-  $http.get(`http://homepage.app:8080/app/modules/weather/zip-codes.json`).then(function(response) {
+  $http.get(`${AppConstants.basePathHost}:8080/app/modules/weather/zip-codes.json`).then(function(response) {
     vm.zipCodesJson = response.data;
   }).catch(function(e) {
     console.log("Error: " + e);
@@ -34,12 +34,12 @@ function weatherController($cookies, ApiService, $http) {
     return
   }
 
-  if (vm.zipCode) {
+  if (vm.cachedZipCode) {
 
     vm.showInput = false;
     vm.showWeather = true;
 
-    ApiService.weather(vm.zipCode).then(function(response) {
+    ApiService.weather(vm.cachedZipCode).then(function(response) {
       vm.weather = response.data;
       console.log(vm.weather);
 
@@ -51,22 +51,23 @@ function weatherController($cookies, ApiService, $http) {
 
     if (vm.userZipCode < 10000) {
       vm.userZipCodeString = ("00000" + vm.userZipCode).slice(-5);
-      console.log(vm.userZipCodeString);
+      // console.log(vm.userZipCodeString);
     }
 
-    console.log(typeof(vm.userZipCodeString));
+    // console.log(typeof(vm.userZipCodeString));
 
     if (!vm.userZipCodeString) {
       vm.userZipCodeString = vm.userZipCode.toString();
-      console.log(vm.userZipCodeString);
+      // console.log(vm.userZipCodeString);
     }
 
-    console.log(vm.zipCodesJson.indexOf(vm.userZipCodeString));
+    // console.log(vm.zipCodesJson.indexOf(vm.userZipCodeString));
 
     if (vm.zipCodesJson.indexOf(vm.userZipCodeString) > 0) {
 
       $cookies.put('zipCode', vm.userZipCodeString);
-      console.log($cookies.get('zipCode'));
+      vm.cachedZipCode = vm.userZipCode;
+      // console.log($cookies.get('zipCode'));
       vm.showInput = false;
       vm.showWeather = true;
 

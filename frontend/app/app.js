@@ -21,6 +21,7 @@ import apodModal from './modals/apod/apod.modal.module.js';
 import epicModal from './modals/epic/epic.modal.module.js';
 
 import ApiService from './services/api.service.js';
+import AppConstants from './app.constants.js';
 
 import focusModalClose from './utils/focus-modal-close.js';
 
@@ -38,6 +39,7 @@ angular.module('homepage', [
     ApiService,
     focusModalClose,
     ngCookies,
-    ngMessages
+    ngMessages,
+    AppConstants
 ])
   .config(configuration);

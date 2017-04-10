@@ -1,20 +1,16 @@
 <div>
   <div id="weather-shown">
-    <div ng-show="vm.showWeather">
-      <div class="weather-title">
-        <p>Weather for {{vm.userZipCode}} zip code.</p>
-        <p>Weather and stuff.</p>
-        {{vm.weather}}
+    <div class="weather-title" ng-show="vm.showWeather">
+      <p>Weather for {{vm.cachedZipCode}} zip code.</p>
+      <p>Weather and stuff.</p>
+      {{vm.weather}}
 
-        {{vm.zipCodesList[0]}}
-      </div>
     </div>
   </div>
 
-  <div id="weather-input">
-    <div ng-show="vm.showInput">
-      {{vm.zipCodesList[0]}}
-      <div class="weather-title">
+  <div>
+    <div id="weather-input">
+      <div ng-show="vm.showInput" class="weather-title">
         <p>Get your local weather forecast!</p>
         <form name="infoForm" ng-submit="vm.enterZipCode(infoForm)" novalidate>
 
@@ -39,11 +35,11 @@
         </form>
       </div>
     </div>
-  </div>
 
-  <div id="weather-invalid-zip">
-    <div ng-show="vm.zipError &&(vm.zipValue == infoForm.zip.$modelValue)">
-      <p>Please enter a valid US zip code.</p>
+    <div id="weather-invalid-zip">
+      <div ng-show="vm.zipError &&(vm.zipValue == infoForm.zip.$modelValue)">
+        <p>Please enter a valid US zip code.</p>
+      </div>
     </div>
   </div>
 
