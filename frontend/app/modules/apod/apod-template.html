@@ -1,4 +1,4 @@
-<div class="apod-title">{{vm.title}}</div>
+<div class="apod-title"><h3>{{vm.title}}</h3></div>
 <div class="apod-picture-wrapper">
   <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" ng-click="vm.toggleApodModal()" ng-show="vm.apod.imgUrl && !vm.apod.invalidVideo" ng-keydown="vm.spaceEnter($event)"></img>
 

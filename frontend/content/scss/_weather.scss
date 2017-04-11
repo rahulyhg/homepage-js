@@ -2,6 +2,14 @@
   animation: 0.75s slideInLeft ease;
 }
 
+#weather-shown p {
+  line-height: 1.5;
+}
+
+#weather-now .ng-hide-remove {
+  animation: 0.55s pulse ease;
+}
+
 #weather-input .ng-hide-add {
   animation: 0.25s lightSpeedOut ease;
 }
@@ -31,8 +39,25 @@
 }
 
 .weather-title {
-  text-align: center;
+  // text-align: center;
+  float: left;
   width: 100%;
   display: block;
-  margin: 12px 0 12px 0;
+  // margin: 12px 0 12px 0;
+  padding: 0 16px 0 16px;
+}
+
+#weather-now {
+  text-align: center;
+  padding: 0 20px 20px 20px;
+  float: left;
+}
+
+.weather-icon {
+  position: relative;
+  top: 14px;
+}
+
+.weather-temp-change {
+  cursor: pointer;
 }

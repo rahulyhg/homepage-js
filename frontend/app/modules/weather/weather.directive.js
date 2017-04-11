@@ -20,11 +20,14 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
 
   vm.showInput = true;
   vm.showWeather = false;
+  vm.tempF = true;
   vm.enterZipCode = enterZipCode;
+  vm.tempChange = tempchange;
 
   vm.cachedZipCode = $cookies.get('zipCode');
 
-  $http.get(`${AppConstants.basePathHost}:8080/app/modules/weather/zip-codes.json`).then(function(response) {
+  $http.get(`${AppConstants.basePathIp}:8080/app/modules/weather/zip-codes.json`).then(function(response) {
+  // $http.get(`${AppConstants.basePathHost}:8080/app/modules/weather/zip-codes.json`).then(function(response) {
     vm.zipCodesJson = response.data;
   }).catch(function(e) {
     console.log("Error: " + e);
@@ -49,19 +52,14 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
 
   function enterZipCode(infoForm) {
 
+
     if (vm.userZipCode < 10000) {
       vm.userZipCodeString = ("00000" + vm.userZipCode).slice(-5);
-      // console.log(vm.userZipCodeString);
     }
-
-    // console.log(typeof(vm.userZipCodeString));
 
     if (!vm.userZipCodeString) {
       vm.userZipCodeString = vm.userZipCode.toString();
-      // console.log(vm.userZipCodeString);
     }
-
-    // console.log(vm.zipCodesJson.indexOf(vm.userZipCodeString));
 
     if (vm.zipCodesJson.indexOf(vm.userZipCodeString) > 0) {
 
@@ -83,6 +81,10 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
       vm.zipError = true;
     }
 
+  }
+
+  function tempchange() {
+    vm.tempF = !vm.tempF;
   }
 
 }

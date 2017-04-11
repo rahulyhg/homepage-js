@@ -1,9 +1,47 @@
 <div>
   <div id="weather-shown">
-    <div class="weather-title" ng-show="vm.showWeather">
-      <p>Weather for {{vm.cachedZipCode}} zip code.</p>
-      <p>Weather and stuff.</p>
-      {{vm.weather}}
+    <div ng-show="vm.showWeather">
+      <div class="weather-title col-12 col-t-7">
+        <p>
+          {{vm.weather.cityState}} {{vm.cachedZipCode}}<br/>
+          Weather Station ID: {{vm.weather.station}}<br/>
+          {{vm.weather.time}}
+        </p>
+      </div>
+      <div id="weather-now" class="col-12 col-t-7">
+        <p ng-show="vm.tempF">
+          <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> {{vm.weather.tempNowF}}<sup>o</sup>   <b>F</b> | <a ng-click="vm.tempChange()" class="weather-temp-change">C</a>
+          <br/>
+          Precipitation: {{vm.weather.precipTodayInch}} inches today.
+          <br/>
+          Humidity: {{vm.weather.humidity}}
+          <br/>
+          Wind: {{vm.weather.windMph}} mph {{vm.weather.windDir}}
+        </p>
+        <p ng-show="!vm.tempF">
+          <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> {{vm.weather.tempNowC}}<sup>o</sup>   <a ng-click="vm.tempChange()" class="weather-temp-change">F</a> | <b>C</b>
+          <br/>
+          Precipitation: {{vm.weather.precipTodayMm}} millimeters. today.
+          <br/>
+          Humidity: {{vm.weather.humidity}}
+          <br/>
+          Wind: {{vm.weather.windKph}} kph {{vm.weather.windDir}}
+        </p>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
   </div>

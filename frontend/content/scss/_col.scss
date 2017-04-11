@@ -48,7 +48,12 @@
       border-right: 1px solid black;
       border-bottom: 1px solid black;
     }
+
+    p {
+      font-size: 16px;
+    }
 }
+
 @media only screen and (min-width: 768px) {
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
@@ -96,6 +101,9 @@
       border-right: 1px solid black;
     }
 
+    p {
+      font-size: 16px;
+    }
 }
 
 @media only screen and (orientation: landscape) and (max-width: 800px) {
