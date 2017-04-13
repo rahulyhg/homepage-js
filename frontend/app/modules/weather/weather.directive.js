@@ -22,7 +22,8 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
   vm.showWeather = false;
   vm.tempF = true;
   vm.enterZipCode = enterZipCode;
-  vm.tempChange = tempchange;
+  vm.tempChange = tempChange;
+  vm.resetZip = resetZip;
 
   vm.cachedZipCode = $cookies.get('zipCode');
 
@@ -38,21 +39,17 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
   }
 
   if (vm.cachedZipCode) {
-
     vm.showInput = false;
     vm.showWeather = true;
 
     ApiService.weather(vm.cachedZipCode).then(function(response) {
       vm.weather = response.data;
-      console.log(vm.weather);
-
+      // console.log(vm.weather);
     });
 
   }
 
   function enterZipCode(infoForm) {
-
-
     if (vm.userZipCode < 10000) {
       vm.userZipCodeString = ("00000" + vm.userZipCode).slice(-5);
     }
@@ -62,16 +59,14 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
     }
 
     if (vm.zipCodesJson.indexOf(vm.userZipCodeString) > 0) {
-
       $cookies.put('zipCode', vm.userZipCodeString);
       vm.cachedZipCode = vm.userZipCode;
-      // console.log($cookies.get('zipCode'));
       vm.showInput = false;
       vm.showWeather = true;
 
       ApiService.weather(vm.userZipCodeString).then(function(response) {
         vm.weather = response.data;
-        console.log(vm.weather);
+        // console.log(vm.weather);
       });
     }
 
@@ -83,8 +78,14 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
 
   }
 
-  function tempchange() {
+  function tempChange() {
     vm.tempF = !vm.tempF;
+  }
+
+  function resetZip() {
+    vm.showWeather = !vm.showWeather;
+    vm.showInput = !vm.showInput;
+    $cookies.remove('zipCode');
   }
 
 }

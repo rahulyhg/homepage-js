@@ -14,7 +14,15 @@ module.exports = {
             { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
             { test: /\.css$/, loader: "style-loader!css-loader" },
             { test: /\.html$/, loader: "html-loader" },
-            { test: /\.jsx?$/, loader: "babel-loader", exclude: /node_modules/},
+            { test: /\.jsx?$/, loader: "babel-loader", exclude: /node_modules/ },
+            { test: /\.(png|jpg|jpeg)$/,
+              loader: "url-loader?limit=10000!image-webpack-loader" ,
+              query: {
+                optipng: {
+                  optimizationLevel: 1,
+                },
+              },
+            },
           ]
         },
 

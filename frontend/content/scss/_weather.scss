@@ -1,12 +1,22 @@
+sup {
+  font-size: 9px;
+}
+
+a small {
+  color: $error-text-color;
+  cursor: pointer;
+}
+
 #weather-shown .ng-hide-remove {
   animation: 0.75s slideInLeft ease;
 }
 
-#weather-shown p {
-  line-height: 1.5;
-}
+// Unintended effects, sadly
+// #weather-shown .ng-hide-add {
+//   animation: 0.25s lightSpeedOut ease;
+// }
 
-#weather-now .ng-hide-remove {
+#weather-wrapper .ng-hide-remove {
   animation: 0.55s pulse ease;
 }
 
@@ -14,8 +24,8 @@
   animation: 0.25s lightSpeedOut ease;
 }
 
-#weather-input {
-  overflow: hidden;
+#weather-input .ng-hide-remove {
+  animation: 0.25s slideInLeft ease;
 }
 
 #weather-invalid-zip .ng-hide-add {
@@ -26,6 +36,43 @@
   animation: 0.5s pulse ease;
 }
 
+#weather-shown {
+  overflow: hidden;
+}
+
+#weather-shown p {
+  line-height: 1.5;
+}
+
+#weather-shown .weather-title p {
+  margin-bottom: 0;
+}
+
+#weather-shown .weather-forecast p {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#weather-shown .weather-forecast ul {
+  padding: 0;
+  margin: 0;
+}
+
+#weather-shown .weather-forecast li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 3px;
+  width: 22.5%;
+}
+
+#weather-now p {
+  margin-bottom: 0;
+}
+
+#weather-input {
+  overflow: hidden;
+}
+
 #weather-invalid-zip {
   text-align: center;
   font-size: 12px;
@@ -33,24 +80,37 @@
   overflow: hidden;
 }
 
+.weather-input-wrapper {
+  text-align: center;
+}
+
 .weather-error {
   font-size: 12px;
   color: $error-text-color;
 }
 
+.weather-astronomy-wrapper {
+  overflow: hidden;
+}
+
+.weather-astronomy-left {
+  // float: left;
+}
+
 .weather-title {
-  // text-align: center;
-  float: left;
-  width: 100%;
+  // float: left;
+  // width: 100%;
   display: block;
-  // margin: 12px 0 12px 0;
-  padding: 0 16px 0 16px;
+  padding: 0 7.5% 0 7.5%;
 }
 
 #weather-now {
   text-align: center;
-  padding: 0 20px 20px 20px;
-  float: left;
+  margin: auto;
+}
+
+#weather-now b {
+  color: $error-text-color;
 }
 
 .weather-icon {
@@ -60,4 +120,32 @@
 
 .weather-temp-change {
   cursor: pointer;
+}
+
+#astronomy {
+  padding: 5% 7.5% 0 7.5%;
+}
+
+.forecast-trademark-wrapper {
+  overflow: hidden;
+}
+
+.weather-forecast {
+  padding: 0 7.5% 0 7.5%;
+  text-align: center;
+}
+
+.weather-trademark .mobile {
+  display: block;
+  width: 250px;
+  margin: auto;
+  padding: 5% 0 5% 0;
+}
+
+.weather-trademark .tablet {
+  display: none;
+}
+
+.weather-trademark .desktop {
+  display: none;
 }

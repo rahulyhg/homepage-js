@@ -1,52 +1,90 @@
 <div>
   <div id="weather-shown">
     <div ng-show="vm.showWeather">
-      <div class="weather-title col-12 col-t-7">
-        <p>
-          {{vm.weather.cityState}} {{vm.cachedZipCode}}<br/>
-          Weather Station ID: {{vm.weather.station}}<br/>
-          {{vm.weather.time}}
-        </p>
+      <div id="weather-wrapper">
+        <div class="weather-astronomy-wrapper col-12 col-t-12">
+          <div class="weather-astronomy-left col-7 col-t-7">
+            <div class="weather-title">
+              <p>
+                {{vm.weather.cityState}} {{vm.cachedZipCode}} <a ng-click="vm.resetZip()"><small>[reset]</small></a><br/>
+                Weather Station ID: {{vm.weather.station}}<br/>
+                {{vm.weather.time}}
+              </p>
+            </div>
+            <div id="weather-now">
+              <p ng-show="vm.tempF">
+                <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> <strong>{{vm.weather.tempNowF}}</strong>&nbsp;&nbsp;<sup>o</sup><b>F</b> | <sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change">C</a>
+                <br/>
+                <text ng-show="vm.weather.precipTodayInch">Precipitation: {{vm.weather.precipTodayInch}} inches today.</text>
+                <br/>
+                Humidity: {{vm.weather.humidity}}
+                <br/>
+                Wind: {{vm.weather.windMph}} mph {{vm.weather.windDir}}
+              </p>
+              <p ng-show="!vm.tempF">
+                <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> <strong>{{vm.weather.tempNowC}}</strong>&nbsp;&nbsp;<sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change">F</a> | <sup>o</sup><b>C</b>
+                <br/>
+                <text ng-show="vm.weather.precipTodayMm">Precipitation: {{vm.weather.precipTodayMm}} millimeters today.</text>
+                <br/>
+                Humidity: {{vm.weather.humidity}}
+                <br/>
+                Wind: {{vm.weather.windKph}} kph {{vm.weather.windDir}}
+              </p>
+            </div>
+          </div>
+          <div id="astronomy" class="col-5 col-t-5">
+            <p>
+              Sunrise: {{vm.weather.sunriseTime}}
+              <br/>
+              Sunset: {{vm.weather.sunsetTime}}
+            </p>
+            <p>
+              Moonrise: {{vm.weather.moonriseTime}}
+              <br/>
+              Moonset: {{vm.weather.moonsetTime}}
+            </p>
+            <p>
+              {{vm.weather.moonIllum}}% Illumination
+              <br/>
+              Phase: {{vm.weather.moonPhase}}
+            </p>
+          </div>
+        </div>
+
+        <div class="forecast-trademark-wrapper col-12 col-t-12">
+          <div class="weather-forecast col-8 col-t-12">
+            <ul ng-show="vm.tempF">
+              <li ng-repeat="day in vm.weather.days">
+                <p text-align="center">
+                  {{day.name}}<br/>
+                  <img ng-src="{{day.weatherIcon}}"/><br/>
+                  {{day.hiTempF}}<sup>o</sup>&nbsp;&nbsp;{{day.loTempF}}<sup>o</sup>
+                </p>
+              </li>
+            </ul>
+            <ul ng-show="!vm.tempF">
+              <li ng-repeat="day in vm.weather.days">
+                <p text-align="center">
+                  {{day.name}}<br/>
+                  <img ng-src="{{day.weatherIcon}}"/><br/>
+                  {{day.hiTempC}}<sup>o</sup>&nbsp;&nbsp;{{day.loTempC}}<sup>o</sup>
+                </p>
+              </li>
+            </ul>
+
+
+          </div>
+          <div class="weather-trademark col-4 col-t-12">
+            <img ng-src="../content/static/wu_logo_horiz.jpg" class="mobile">
+            <img ng-src="../content/static/wu_logo_horiz.jpg" class="tablet">
+            <img ng-src="../content/static/wu_logo_stacked.jpg" class="desktop">
+          </div>
+        </div>
       </div>
-      <div id="weather-now" class="col-12 col-t-7">
-        <p ng-show="vm.tempF">
-          <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> {{vm.weather.tempNowF}}<sup>o</sup>   <b>F</b> | <a ng-click="vm.tempChange()" class="weather-temp-change">C</a>
-          <br/>
-          Precipitation: {{vm.weather.precipTodayInch}} inches today.
-          <br/>
-          Humidity: {{vm.weather.humidity}}
-          <br/>
-          Wind: {{vm.weather.windMph}} mph {{vm.weather.windDir}}
-        </p>
-        <p ng-show="!vm.tempF">
-          <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> {{vm.weather.tempNowC}}<sup>o</sup>   <a ng-click="vm.tempChange()" class="weather-temp-change">F</a> | <b>C</b>
-          <br/>
-          Precipitation: {{vm.weather.precipTodayMm}} millimeters. today.
-          <br/>
-          Humidity: {{vm.weather.humidity}}
-          <br/>
-          Wind: {{vm.weather.windKph}} kph {{vm.weather.windDir}}
-        </p>
-
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   </div>
 
-  <div>
+  <div class="weather-input-wrapper">
     <div id="weather-input">
       <div ng-show="vm.showInput" class="weather-title">
         <p>Get your local weather forecast!</p>

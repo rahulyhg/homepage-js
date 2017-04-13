@@ -76,10 +76,11 @@ class WeatherController extends Controller
         'moonsetTime' => $moonsetTime,
         'moonIllum' => $responseData['moon_phase']['percentIlluminated'],
         'moonPhase' => $responseData['moon_phase']['phaseofMoon'],
+        'days' => [],
       ];
 
-      for ($i = 1; $i <= 7; $i++) {
-        $weather['day' . $i] = [
+      for ($i = 0; $i <= 7; $i++) {
+        $weather['days'][$i] = [
           'name' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['date']['weekday_short'],
           'weatherIcon' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['icon_url'],
           'hiTempF' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['high']['fahrenheit'],
@@ -89,8 +90,7 @@ class WeatherController extends Controller
         ];
       }
 
-      // var_dump($weather);
-
+      // return $this->response()->array(json_encode($weather));
       return $this->response()->array($weather);
 
     }

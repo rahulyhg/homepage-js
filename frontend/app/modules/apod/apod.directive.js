@@ -13,7 +13,6 @@ function apod() {
   }
 }
 
-// apodController.$inject = ['$http', 'ApiService'];
 apodController.$inject = ['ApiService'];
 
 function apodController(ApiService) {
@@ -41,7 +40,6 @@ function apodController(ApiService) {
 
   ApiService.apod().then(function(response) {
     vm.apod = response.data;
-    // console.log(vm.apod);
 
     if (vm.apod.vidUrl) {
       vm.title = 'Astronomy Video of the Day';
