@@ -7,6 +7,12 @@ a small {
   cursor: pointer;
 }
 
+a:hover small {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
 #weather-shown .ng-hide-remove {
   animation: 0.75s slideInLeft ease;
 }
@@ -67,6 +73,7 @@ a small {
 
 #weather-now p {
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 #weather-input {
@@ -98,19 +105,22 @@ a small {
 }
 
 .weather-title {
-  // float: left;
-  // width: 100%;
-  display: block;
   padding: 0 7.5% 0 7.5%;
+  text-align: center;
 }
 
 #weather-now {
   text-align: center;
-  margin: auto;
+  padding: 0 0 5% 0;
 }
 
-#weather-now b {
+#weather-now a {
   color: $error-text-color;
+}
+
+#weather-now a:hover {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .weather-icon {
@@ -123,7 +133,7 @@ a small {
 }
 
 #astronomy {
-  padding: 5% 7.5% 0 7.5%;
+  text-align: center;
 }
 
 .forecast-trademark-wrapper {

@@ -13,9 +13,10 @@
             </div>
             <div id="weather-now">
               <p ng-show="vm.tempF">
-                <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> <strong>{{vm.weather.tempNowF}}</strong>&nbsp;&nbsp;<sup>o</sup><b>F</b> | <sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change">C</a>
+                <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon">
+                <strong>{{vm.weather.tempNowF}}</strong>&nbsp;&nbsp;<sup>o</sup><b>F</b> | <sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change">C</a>
                 <br/>
-                <text ng-show="vm.weather.precipTodayInch">Precipitation: {{vm.weather.precipTodayInch}} inches today.</text>
+                <text ng-show="vm.weather.precipTodayInch">Precipitation: {{vm.weather.precipTodayInch}} inches.</text>
                 <br/>
                 Humidity: {{vm.weather.humidity}}
                 <br/>
@@ -24,7 +25,7 @@
               <p ng-show="!vm.tempF">
                 <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> <strong>{{vm.weather.tempNowC}}</strong>&nbsp;&nbsp;<sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change">F</a> | <sup>o</sup><b>C</b>
                 <br/>
-                <text ng-show="vm.weather.precipTodayMm">Precipitation: {{vm.weather.precipTodayMm}} millimeters today.</text>
+                <text ng-show="vm.weather.precipTodayMm">Precipitation: {{vm.weather.precipTodayMm}} millimeters.</text>
                 <br/>
                 Humidity: {{vm.weather.humidity}}
                 <br/>
@@ -32,7 +33,7 @@
               </p>
             </div>
           </div>
-          <div id="astronomy" class="col-5 col-t-5">
+          <div id="astronomy" class="col-6 col-t-5">
             <p>
               Sunrise: {{vm.weather.sunriseTime}}
               <br/>

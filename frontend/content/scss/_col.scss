@@ -54,7 +54,7 @@
     }
 
     .weather-title {
-
+      text-align: left;
     }
 
     #weather-shown .weather-forecast li {
@@ -74,7 +74,9 @@
 
     #astronomy {
       padding: 0 4.4% 0 4.4%;
+      width: 40%;
       float: right;
+      text-align: left;
     }
 
     .weather-astronomy-left {
