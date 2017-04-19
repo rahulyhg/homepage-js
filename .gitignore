@@ -1,7 +1,8 @@
+.git
 api/vendor/
 api/.env
-api/.gitignore
-api/.git/
+api/lumen_push*
+api/readme.md
+frontend/bundle.js
+frontend/playground.scss
 frontend/node_modules/
-frontend/.gitignore
-frontend/.git/

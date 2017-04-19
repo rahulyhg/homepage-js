@@ -31,6 +31,12 @@
   margin: 0 auto 0 auto;
 }
 
+.apod-modal-video-wrapper {
+  display: table;
+  margin: 0 auto 0 auto;
+  width: 100%;
+}
+
 .apod-picture-modal {
   max-width: 600px;
   max-height: 60%;
@@ -45,7 +51,7 @@
 	padding-bottom: 56.25%;
 	padding-top: 25px;
 	height: 0;
-  width: 85%;
+  width: 100%;
   margin: auto;
 }
 

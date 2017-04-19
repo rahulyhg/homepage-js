@@ -41,7 +41,6 @@ function epicController($http, ApiService) {
 
   ApiService.epic().then(function(response) {
     vm.epic = response.data;
-    // console.log(vm.epic);
   });
 }
 

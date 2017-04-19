@@ -27,8 +27,7 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
 
   vm.cachedZipCode = $cookies.get('zipCode');
 
-  $http.get(`${AppConstants.basePathIp}:8080/app/modules/weather/zip-codes.json`).then(function(response) {
-  // $http.get(`${AppConstants.basePathHost}:8080/app/modules/weather/zip-codes.json`).then(function(response) {
+  $http.get(`${AppConstants.basePath}/content/static/zip-codes.json`).then(function(response) {
     vm.zipCodesJson = response.data;
   }).catch(function(e) {
     console.log("Error: " + e);
@@ -44,7 +43,6 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
 
     ApiService.weather(vm.cachedZipCode).then(function(response) {
       vm.weather = response.data;
-      // console.log(vm.weather);
     });
 
   }
@@ -66,7 +64,6 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
 
       ApiService.weather(vm.userZipCodeString).then(function(response) {
         vm.weather = response.data;
-        // console.log(vm.weather);
       });
     }
 
@@ -85,6 +82,7 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
   function resetZip() {
     vm.showWeather = !vm.showWeather;
     vm.showInput = !vm.showInput;
+    delete vm.userZipCodeString;
     $cookies.remove('zipCode');
   }
 

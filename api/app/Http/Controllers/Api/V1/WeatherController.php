@@ -27,12 +27,13 @@ class WeatherController extends Controller
       $client = new Client();
       $zipCode = $request->zip;
 
-      // return $zipCode;
-
       $weather_api_key = $_ENV['WEATHER_API_KEY'];
 
       $weatherBaseUrl = 'https://api.wunderground.com/api/';
       $weatherUrl = $weatherBaseUrl . $weather_api_key . '/forecast10day/astronomy/conditions/alerts/q/' . $zipCode . '.json';
+      
+      $imgUrlBase = 'https://api.wunderground.com/';
+      $imgUrlHttp = 'http://icons.wxug.com/';
 
       try {
         $response = $client->request('GET', $weatherUrl);
@@ -41,10 +42,6 @@ class WeatherController extends Controller
       }
 
       $responseData = json_decode($response->getBody(), true);
-
-      // echo '<pre>';
-      // print_r($responseData);
-      // echo '</pre>';
 
       $sunriseTimeStr = $responseData['sun_phase']['sunrise']['hour'] . ':' .  $responseData['sun_phase']['sunrise']['minute'];
       $sunsetTimeStr = $responseData['sun_phase']['sunset']['hour'] . ':' .  $responseData['sun_phase']['sunrise']['minute'];
@@ -61,7 +58,7 @@ class WeatherController extends Controller
         'station' => $responseData['current_observation']['station_id'],
         'time' => $responseData['current_observation']['local_time_rfc822'],
         'weatherNow' => $responseData['current_observation']['weather'],
-        'weatherNowIcon' => $responseData['current_observation']['icon_url'],
+        'weatherNowIcon' => str_replace($imgUrlHttp, $imgUrlBase, $responseData['current_observation']['icon_url']),
         'precipTodayInch' => $responseData['current_observation']['precip_today_in'],
         'precipTodayMm' => $responseData['current_observation']['precip_today_metric'],
         'tempNowF' => $responseData['current_observation']['temp_f'],
@@ -82,7 +79,7 @@ class WeatherController extends Controller
       for ($i = 0; $i <= 7; $i++) {
         $weather['days'][$i] = [
           'name' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['date']['weekday_short'],
-          'weatherIcon' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['icon_url'],
+          'weatherIcon' => str_replace($imgUrlHttp, $imgUrlBase, $responseData['forecast']['simpleforecast']['forecastday'][$i]['icon_url']),
           'hiTempF' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['high']['fahrenheit'],
           'hiTempC' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['high']['celsius'],
           'loTempF' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['low']['fahrenheit'],
@@ -90,7 +87,6 @@ class WeatherController extends Controller
         ];
       }
 
-      // return $this->response()->array(json_encode($weather));
       return $this->response()->array($weather);
 
     }

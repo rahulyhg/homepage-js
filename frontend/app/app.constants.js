@@ -2,8 +2,8 @@ import angular from 'angular';
 
 function AppConstants() {
   return {
-    basePathIp: 'http://192.168.0.30',
-    basePathHost: 'http://homepage.app',
+    baseApiPath: location.protocol + '//' + location.hostname,
+    basePath: location.protocol + '//' + location.host,
   }
 }
 
