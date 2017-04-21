@@ -6,4 +6,4 @@ When finished, the application will be fully optimized for both mobile devices a
 
 The site uses AngularJS version 1.6.2, which interacts with an API done with Lumen by Laravel. For now, I am manually creating all stylesheets, rather than using Bootstrap. 
 
-The site is currently hosted at [ckeele.com](ckeele.com). 
+The site is currently hosted at [ckeele.com](http://ckeele.com). 
