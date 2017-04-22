@@ -32,7 +32,7 @@ function apodModalController($scope) {
     vm.apodLastFocus.focus();
   }
 
-  function escape($event) {
+  function escape(event) {
     if (event.which === 27) {
       vm.hideApodModal();
     }

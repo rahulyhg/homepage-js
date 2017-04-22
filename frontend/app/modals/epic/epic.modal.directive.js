@@ -32,7 +32,7 @@ function epicModalController($scope) {
     vm.epicLastFocus.focus();
   }
 
-  function escape($event) {
+  function escape(event) {
     if (event.which === 27) {
       vm.hideEpicModal();
     }

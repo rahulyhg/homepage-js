@@ -1,6 +1,6 @@
 <div ng-show="vm.apodModalShown">
   <div class="modal-dialog" ng-keydown="vm.escape($event)">
-    <button type="button" class="modal-close" aria-label="Close" ng-click="vm.hideApodModal()" focus-modal-close="vm.apodModalFocus" ng-keydown="vm.escape($event)">X</button>
+    <button type="button" class="modal-close" aria-label="Close" ng-click="vm.hideApodModal()" focus-on="vm.apodModalFocus" ng-keydown="vm.escape($event)">X</button>
     <div class="modal-content" ng-transclude></div>
     <div class="modal-dialog-bottom"></div>
   </div>

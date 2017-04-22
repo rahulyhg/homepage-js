@@ -2,12 +2,12 @@
 
 import angular from 'angular';
 
-focusModalClose.$inject = ['$timeout', '$parse'];
+focusOn.$inject = ['$timeout', '$parse'];
 
-function focusModalClose($timeout, $parse) {
+function focusOn($timeout, $parse) {
   return {
     link: function (scope, element, attrs) {
-      var model = $parse(attrs.focusModalClose);
+      var model = $parse(attrs.focusOn);
       scope.$watch(model, function (val) {
         if (val === true) {
           $timeout(function () {
@@ -19,7 +19,7 @@ function focusModalClose($timeout, $parse) {
   };
 };
 
-export default angular.module('focusModalClose', [
+export default angular.module('focusOn', [
   ])
-  .directive('focusModalClose', focusModalClose)
+  .directive('focusOn', focusOn)
   .name;

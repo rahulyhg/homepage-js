@@ -6,15 +6,15 @@
           <div class="weather-astronomy-left col-7 col-t-7">
             <div class="weather-title">
               <p>
-                {{vm.weather.cityState}} {{vm.cachedZipCode}} <a ng-click="vm.resetZip()"><small>[reset]</small></a><br/>
+                {{vm.weather.cityState}} {{vm.cachedZipCode}} <a ng-click="vm.resetZip()" tabIndex="0" ng-keypress="vm.spaceEnterReset($event)" focus-on="vm.showWeather && vm.zipChanged"><small>[reset]</small></a><br/>
                 Weather Station ID: {{vm.weather.station}}<br/>
                 {{vm.weather.time}}
               </p>
             </div>
             <div id="weather-now">
               <p ng-show="vm.tempF">
-                <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon">
-                <strong>{{vm.weather.tempNowF}}</strong>&nbsp;&nbsp;<sup>o</sup><b>F</b> | <sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change">C</a>
+                <img ng-src="{{vm.weather.weatherNowIcon}}" alt="{{vm.weather.weatherNow}}" title="{{vm.weather.weatherNow}}" class="weather-icon">
+                <strong>{{vm.weather.tempNowF}}</strong>&nbsp;&nbsp;<sup>o</sup><b>F</b> | <sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change" tabIndex="0" ng-keypress="vm.spaceEnter($event)" focus-on="vm.tempF && vm.tempChanged">C</a>
                 <br/>
                 <text ng-show="vm.weather.precipTodayInch">Precipitation: {{vm.weather.precipTodayInch}} inches.</text>
                 <br/>
@@ -23,7 +23,7 @@
                 Wind: {{vm.weather.windMph}} mph {{vm.weather.windDir}}
               </p>
               <p ng-show="!vm.tempF">
-                <img ng-src="{{vm.weather.weatherNowIcon}}" class="weather-icon"> <strong>{{vm.weather.tempNowC}}</strong>&nbsp;&nbsp;<sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change">F</a> | <sup>o</sup><b>C</b>
+                <img ng-src="{{vm.weather.weatherNowIcon}}" alt="{{vm.weather.weatherNow}}" title="{{vm.weather.weatherNow}}" class="weather-icon"> <strong>{{vm.weather.tempNowC}}</strong>&nbsp;&nbsp;<sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change" tabIndex="0" ng-keypress="vm.spaceEnter($event)" focus-on="!vm.tempF">F</a> | <sup>o</sup><b>C</b>
                 <br/>
                 <text ng-show="vm.weather.precipTodayMm">Precipitation: {{vm.weather.precipTodayMm}} millimeters.</text>
                 <br/>
@@ -58,7 +58,7 @@
               <li ng-repeat="day in vm.weather.days">
                 <p text-align="center">
                   {{day.name}}<br/>
-                  <img ng-src="{{day.weatherIcon}}"/><br/>
+                  <img ng-src="{{day.weatherIcon}}" alt="{{day.conditions}}" title="{{day.conditions}}"/><br/>
                   {{day.hiTempF}}<sup>o</sup>&nbsp;&nbsp;{{day.loTempF}}<sup>o</sup>
                 </p>
               </li>
@@ -67,7 +67,7 @@
               <li ng-repeat="day in vm.weather.days">
                 <p text-align="center">
                   {{day.name}}<br/>
-                  <img ng-src="{{day.weatherIcon}}"/><br/>
+                  <img ng-src="{{day.weatherIcon}}" alt="{{day.conditions}}" title="{{day.conditions}}"/><br/>
                   {{day.hiTempC}}<sup>o</sup>&nbsp;&nbsp;{{day.loTempC}}<sup>o</sup>
                 </p>
               </li>
@@ -75,9 +75,9 @@
 
           </div>
           <div class="weather-trademark col-4 col-t-12">
-            <img ng-src="../content/static/wu_logo_horiz.jpg" class="mobile">
-            <img ng-src="../content/static/wu_logo_horiz.jpg" class="tablet">
-            <img ng-src="../content/static/wu_logo_stacked.jpg" class="desktop">
+            <a href="https://www.wunderground.com/"><img ng-src="../content/static/wu_logo_horiz.jpg" alt="Weather Underground" title="Weather Underground" class="mobile"></a>
+            <a href="https://www.wunderground.com/"><img ng-src="../content/static/wu_logo_horiz.jpg" alt="Weather Underground" title="Weather Underground" class="tablet"></a>
+            <a href="https://www.wunderground.com/"><img ng-src="../content/static/wu_logo_stacked.jpg" alt="Weather Underground" title="Weather Underground" class="desktop"></a>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
         <p>Get your local weather forecast!</p>
         <form name="infoForm" ng-submit="vm.enterZipCode(infoForm)" novalidate>
 
-          <input type="number" name="zip" size="9" class="no-spinners" ng-model="vm.userZipCode" min="1" max="100000000" ng-minlength="5" ng-maxlength="5" placeholder="Enter zip code" required aria-required="true" tabIndex="0">
+          <input type="number" name="zip" size="9" class="no-spinners" ng-model="vm.userZipCode" min="1" max="100000000" ng-minlength="5" ng-maxlength="5" placeholder="Enter zip code" required aria-required="true" tabIndex="0" focus-on="vm.resetZipTrue">
 
           <button type="submit" tabIndex="0" ng-disabled="!infoForm.$valid"><small>Submit Zip</small></button>
 

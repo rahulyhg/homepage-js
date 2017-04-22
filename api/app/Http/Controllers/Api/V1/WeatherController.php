@@ -31,7 +31,7 @@ class WeatherController extends Controller
 
       $weatherBaseUrl = 'https://api.wunderground.com/api/';
       $weatherUrl = $weatherBaseUrl . $weather_api_key . '/forecast10day/astronomy/conditions/alerts/q/' . $zipCode . '.json';
-      
+
       $imgUrlBase = 'https://api.wunderground.com/';
       $imgUrlHttp = 'http://icons.wxug.com/';
 
@@ -80,6 +80,7 @@ class WeatherController extends Controller
         $weather['days'][$i] = [
           'name' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['date']['weekday_short'],
           'weatherIcon' => str_replace($imgUrlHttp, $imgUrlBase, $responseData['forecast']['simpleforecast']['forecastday'][$i]['icon_url']),
+          'conditions' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['conditions'],
           'hiTempF' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['high']['fahrenheit'],
           'hiTempC' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['high']['celsius'],
           'loTempF' => $responseData['forecast']['simpleforecast']['forecastday'][$i]['low']['fahrenheit'],

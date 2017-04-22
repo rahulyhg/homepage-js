@@ -23,7 +23,7 @@ import epicModal from './modals/epic/epic.modal.module.js';
 import ApiService from './services/api.service.js';
 import AppConstants from './app.constants.js';
 
-import focusModalClose from './utils/focus-modal-close.js';
+import focusOn from './utils/focus-on.js';
 
 angular.module('homepage', [
     ngAnimate,
@@ -37,7 +37,7 @@ angular.module('homepage', [
     apodModal,
     epicModal,
     ApiService,
-    focusModalClose,
+    focusOn,
     ngCookies,
     ngMessages,
     AppConstants

@@ -32,7 +32,7 @@ function apodController(ApiService) {
     vm.apodLastFocus = document.activeElement;
   }
 
-  function spaceEnter($event) {
+  function spaceEnter(event) {
     if (event.which === 13 || event.which === 32) {
       vm.toggleApodModal();
     }
