@@ -1,8 +1,8 @@
-<div ng-show="vm.epicModalShown">
+<div ng-show="vm.epicModalShown" aria-hidden="{{!$root.modalOpen}}">
   <div class="modal-dialog">
-    <button type="button" class="modal-close" aria-label="Close" ng-click="vm.hideEpicModal()" focus-on="vm.epicModalFocus" ng-keydown="vm.escape($event)">X</button>
+    <button type="button" class="modal-close" aria-label="Close" ng-click="vm.hideEpicModal()" focus-on="vm.epicModalFocus" ng-keydown="vm.escape($event)" tabIndex="{{$root.modalTabIndex}}">X</button>
     <div class="modal-content" ng-transclude></div>
   </div>
-  <div class="modal-overlay" ng-click="vm.hideEpicModal()" ng-keydown="vm.escape($event)">
+  <div class="modal-overlay" aria-label="Press escape to close" ng-click="vm.hideEpicModal()" ng-keydown="vm.escape($event)">
   </div>
 </div>

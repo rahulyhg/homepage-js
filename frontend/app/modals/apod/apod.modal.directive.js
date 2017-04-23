@@ -18,15 +18,20 @@ function apodModal() {
   }
 }
 
-apodModalController.$inject = ['$scope'];
+apodModalController.$inject = ['$rootScope'];
+// apodModalController.$inject = ['$scope'];
 
-function apodModalController($scope) {
+function apodModalController($rootScope) {
+// function apodModalController($scope) {
   var vm = this;
 
   vm.hideApodModal = hideApodModal;
   vm.escape = escape;
 
   function hideApodModal() {
+    $rootScope.modalOpen = false;
+    $rootScope.tabIndex = 0;
+    $rootScope.modalTabIndex = -1;
     vm.apodModalShown = false;
     vm.apodModalFocus = false;
     vm.apodLastFocus.focus();

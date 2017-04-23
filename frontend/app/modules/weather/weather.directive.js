@@ -13,9 +13,9 @@ function weather() {
   }
 }
 
-weatherController.$inject = ['$cookies', 'ApiService', '$http', 'AppConstants'];
+weatherController.$inject = ['$cookies', 'ApiService', '$http', 'AppConstants', '$rootScope'];
 
-function weatherController($cookies, ApiService, $http, AppConstants) {
+function weatherController($cookies, ApiService, $http, AppConstants, $rootScope) {
   var vm = this;
 
   vm.showInput = true;
@@ -24,8 +24,10 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
   vm.enterZipCode = enterZipCode;
   vm.tempChange = tempChange;
   vm.resetZip = resetZip;
+  vm.initialPageLoad = true;
   vm.spaceEnter = spaceEnter;
   vm.spaceEnterReset = spaceEnterReset;
+  vm.tabIndex = 0;
 
   vm.cachedZipCode = $cookies.get('zipCode');
 
@@ -64,6 +66,7 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
       vm.showInput = false;
       vm.showWeather = true;
       vm.resetZipTrue = false;
+      vm.initialPageLoad = false;
 
       ApiService.weather(vm.userZipCodeString).then(function(response) {
         vm.weather = response.data;
@@ -98,7 +101,7 @@ function weatherController($cookies, ApiService, $http, AppConstants) {
   function resetZip() {
     vm.showWeather = !vm.showWeather;
     vm.showInput = !vm.showInput;
-    vm.zipChanged = true;
+    vm.initialPageLoad = false;
     vm.resetZipTrue = true;
     delete vm.userZipCodeString;
     $cookies.remove('zipCode');

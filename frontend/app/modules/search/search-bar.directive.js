@@ -13,7 +13,9 @@ function searchBar() {
   }
 }
 
-function searchController() {
+searchController.$inject = ['$rootScope'];
+
+function searchController($rootScope) {
   var vm = this;
 
   vm.message1 = "Google";

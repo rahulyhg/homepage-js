@@ -13,9 +13,9 @@ function apod() {
   }
 }
 
-apodController.$inject = ['ApiService'];
+apodController.$inject = ['ApiService', '$rootScope'];
 
-function apodController(ApiService) {
+function apodController(ApiService, $rootScope) {
   var vm = this;
 
   vm.title = 'Astronomy Picture of the Day';
@@ -27,6 +27,9 @@ function apodController(ApiService) {
   vm.apodLastFocus = {};
 
   function toggleApodModal() {
+    $rootScope.modalOpen = true;
+    $rootScope.tabIndex = -1;
+    $rootScope.modalTabIndex = 0;
     vm.apodModalShown = !vm.apodModalShown;
     vm.apodModalFocus = !vm.apodModalFocus;
     vm.apodLastFocus = document.activeElement;
@@ -37,7 +40,6 @@ function apodController(ApiService) {
       vm.toggleApodModal();
     }
   }
-
   ApiService.apod().then(function(response) {
     vm.apod = response.data;
 

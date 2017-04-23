@@ -13,9 +13,9 @@ function epic() {
   }
 }
 
-epicController.$inject = ['$http', 'ApiService'];
+epicController.$inject = ['$http', 'ApiService', '$rootScope'];
 
-function epicController($http, ApiService) {
+function epicController($http, ApiService, $rootScope) {
   var vm = this;
 
   vm.type = {};
@@ -28,6 +28,9 @@ function epicController($http, ApiService) {
   vm.epicLastFocus = {};
 
   function toggleEpicModal() {
+    $rootScope.modalOpen = true;
+    $rootScope.tabIndex = -1;
+    $rootScope.modalTabIndex = 0;
     vm.epicModalShown = !vm.epicModalShown;
     vm.epicModalFocus = !vm.epicModalFocus;
     vm.epicLastFocus = document.activeElement;

@@ -18,15 +18,20 @@ function epicModal() {
   }
 }
 
-epicModalController.$inject = ['$scope'];
+epicModalController.$inject = ['$rootScope'];
+// epicModalController.$inject = ['$scope'];
 
-function epicModalController($scope) {
+function epicModalController($rootScope) {
+// function epicModalController($scope) {
   var vm = this;
 
   vm.hideEpicModal = hideEpicModal;
   vm.escape = escape;
 
   function hideEpicModal() {
+    $rootScope.modalOpen = false;
+    $rootScope.tabIndex = 0;
+    $rootScope.modalTabIndex = -1;
     vm.epicModalShown = false;
     vm.epicModalFocus = false;
     vm.epicLastFocus.focus();

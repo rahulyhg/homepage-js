@@ -10,6 +10,7 @@ import ngAria from '../node_modules/angular-aria';
 import ngCookies from '../node_modules/angular-cookies';
 import ngMessages from '../node_modules/angular-messages';
 
+import appController from './app.controller.js';
 import configuration from './app.config.js';
 
 import searchBar from './modules/search/search-bar.module.js';
@@ -29,6 +30,8 @@ angular.module('homepage', [
     ngAnimate,
     ngRoute,
     uiRouter,
+    ngCookies,
+    ngMessages,
     ngAria,
     searchBar,
     apod,
@@ -37,9 +40,8 @@ angular.module('homepage', [
     apodModal,
     epicModal,
     ApiService,
+    AppConstants,
     focusOn,
-    ngCookies,
-    ngMessages,
-    AppConstants
+    appController
 ])
   .config(configuration);
