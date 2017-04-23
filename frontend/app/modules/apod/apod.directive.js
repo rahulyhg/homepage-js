@@ -27,9 +27,26 @@ function apodController(ApiService, $rootScope) {
   vm.apodLastFocus = {};
 
   function toggleApodModal() {
+
+    if ($rootScope.mobileLogoTabIndex === 0) {
+      vm.device = 'mobile';
+    }
+
+    if ($rootScope.tabletLogoTabIndex === 0) {
+      vm.device = 'tablet';
+    }
+
+    if ($rootScope.desktopLogoTabIndex === 0) {
+      vm.device = 'desktop';
+    }
+
     $rootScope.modalOpen = true;
     $rootScope.tabIndex = -1;
     $rootScope.modalTabIndex = 0;
+    $rootScope.mobileLogoTabIndex = -1;
+    $rootScope.tabletLogoTabIndex = -1;
+    $rootScope.desktopLogoTabIndex = -1;
+
     vm.apodModalShown = !vm.apodModalShown;
     vm.apodModalFocus = !vm.apodModalFocus;
     vm.apodLastFocus = document.activeElement;

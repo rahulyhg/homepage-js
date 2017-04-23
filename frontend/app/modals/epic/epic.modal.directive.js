@@ -8,7 +8,8 @@ function epicModal() {
     bindToController: {
       epicModalShown: '=',
       epicModalFocus: '=',
-      epicLastFocus: '='
+      epicLastFocus: '=',
+      device: '='
     },
     scope: {},
     transclude: true,
@@ -19,16 +20,33 @@ function epicModal() {
 }
 
 epicModalController.$inject = ['$rootScope'];
-// epicModalController.$inject = ['$scope'];
 
 function epicModalController($rootScope) {
-// function epicModalController($scope) {
   var vm = this;
 
   vm.hideEpicModal = hideEpicModal;
   vm.escape = escape;
 
   function hideEpicModal() {
+
+    if (vm.device === 'mobile') {
+      $rootScope.mobileLogoTabIndex = 0;
+      $rootScope.tabletLogoTabIndex = -1;
+      $rootScope.desktopLogoTabIndex = -1;
+    }
+
+    if (vm.device === 'tablet') {
+      $rootScope.mobileLogoTabIndex = -1;
+      $rootScope.tabletLogoTabIndex = 0;
+      $rootScope.desktopLogoTabIndex = -1;
+    }
+
+    if (vm.device === 'desktop') {
+      $rootScope.mobileLogoTabIndex = -1;
+      $rootScope.tabletLogoTabIndex = -1;
+      $rootScope.desktopLogoTabIndex = 0;
+    }
+
     $rootScope.modalOpen = false;
     $rootScope.tabIndex = 0;
     $rootScope.modalTabIndex = -1;

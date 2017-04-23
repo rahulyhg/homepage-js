@@ -28,9 +28,25 @@ function epicController($http, ApiService, $rootScope) {
   vm.epicLastFocus = {};
 
   function toggleEpicModal() {
+
+    if ($rootScope.mobileLogoTabIndex === 0) {
+      vm.device = 'mobile';
+    }
+
+    if ($rootScope.tabletLogoTabIndex === 0) {
+      vm.device = 'tablet';
+    }
+
+    if ($rootScope.desktopLogoTabIndex === 0) {
+      vm.device = 'desktop';
+    }
+
     $rootScope.modalOpen = true;
     $rootScope.tabIndex = -1;
     $rootScope.modalTabIndex = 0;
+    $rootScope.mobileLogoTabIndex = -1;
+    $rootScope.tabletLogoTabIndex = -1;
+    $rootScope.desktopLogoTabIndex = -1;
     vm.epicModalShown = !vm.epicModalShown;
     vm.epicModalFocus = !vm.epicModalFocus;
     vm.epicLastFocus = document.activeElement;

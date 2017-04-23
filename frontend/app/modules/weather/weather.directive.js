@@ -13,9 +13,9 @@ function weather() {
   }
 }
 
-weatherController.$inject = ['$cookies', 'ApiService', '$http', 'AppConstants', '$rootScope'];
+weatherController.$inject = ['$cookies', 'ApiService', '$http', 'AppConstants', '$rootScope', 'matchmedia'];
 
-function weatherController($cookies, ApiService, $http, AppConstants, $rootScope) {
+function weatherController($cookies, ApiService, $http, AppConstants, $rootScope, matchmedia) {
   var vm = this;
 
   vm.showInput = true;
@@ -106,6 +106,52 @@ function weatherController($cookies, ApiService, $http, AppConstants, $rootScope
     delete vm.userZipCodeString;
     $cookies.remove('zipCode');
   }
+
+
+  vm.phone = matchmedia.is('(max-width: 600px)');
+  if(vm.phone) {
+    $rootScope.mobileLogoTabIndex = 0;
+    $rootScope.tabletLogoTabIndex = -1;
+    $rootScope.desktopLogoTabIndex = -1;
+  }
+
+  matchmedia.on('(max-width: 600px)', function(mediaQueryList){
+    if (mediaQueryList.matches) {
+      $rootScope.mobileLogoTabIndex = 0;
+      $rootScope.tabletLogoTabIndex = -1;
+      $rootScope.desktopLogoTabIndex = -1;
+    }
+  })
+
+  vm.tablet = matchmedia.is('(min-width: 600px) and (max-width: 768px)');
+  if(vm.tablet) {
+    $rootScope.mobileLogoTabIndex = -1;
+    $rootScope.tabletLogoTabIndex = 0;
+    $rootScope.desktopLogoTabIndex = -1;
+  }
+
+  matchmedia.on('(min-width: 600px) and (max-width: 768px)', function(mediaQueryList){
+    if (mediaQueryList.matches) {
+      $rootScope.mobileLogoTabIndex = -1;
+      $rootScope.tabletLogoTabIndex = 0;
+      $rootScope.desktopLogoTabIndex = -1;
+    }
+  })
+
+  vm.desktop = matchmedia.is('(min-width: 768px)');
+  if(vm.desktop) {
+    $rootScope.mobileLogoTabIndex = -1;
+    $rootScope.tabletLogoTabIndex = -1;
+    $rootScope.desktopLogoTabIndex = 0;
+  }
+
+  matchmedia.on('(min-width: 768px)', function(mediaQueryList){
+    if (mediaQueryList.matches) {
+      $rootScope.mobileLogoTabIndex = -1;
+      $rootScope.tabletLogoTabIndex = -1;
+      $rootScope.desktopLogoTabIndex = 0;
+    }
+  })
 
 }
 

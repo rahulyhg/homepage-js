@@ -8,7 +8,8 @@ function apodModal() {
     bindToController: {
       apodModalShown: '=',
       apodModalFocus: '=',
-      apodLastFocus: '='
+      apodLastFocus: '=',
+      device: '='
     },
     scope: {},
     transclude: true,
@@ -19,16 +20,33 @@ function apodModal() {
 }
 
 apodModalController.$inject = ['$rootScope'];
-// apodModalController.$inject = ['$scope'];
 
 function apodModalController($rootScope) {
-// function apodModalController($scope) {
   var vm = this;
 
   vm.hideApodModal = hideApodModal;
   vm.escape = escape;
 
   function hideApodModal() {
+
+    if (vm.device === 'mobile') {
+      $rootScope.mobileLogoTabIndex = 0;
+      $rootScope.tabletLogoTabIndex = -1;
+      $rootScope.desktopLogoTabIndex = -1;
+    }
+
+    if (vm.device === 'tablet') {
+      $rootScope.mobileLogoTabIndex = -1;
+      $rootScope.tabletLogoTabIndex = 0;
+      $rootScope.desktopLogoTabIndex = -1;
+    }
+
+    if (vm.device === 'desktop') {
+      $rootScope.mobileLogoTabIndex = -1;
+      $rootScope.tabletLogoTabIndex = -1;
+      $rootScope.desktopLogoTabIndex = 0;
+    }
+
     $rootScope.modalOpen = false;
     $rootScope.tabIndex = 0;
     $rootScope.modalTabIndex = -1;

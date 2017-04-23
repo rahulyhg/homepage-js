@@ -1,12 +1,12 @@
 .apod-wrapper {
   height: 100%;
+  overflow: hidden;
 }
 
 .apod-title {
   text-align: center;
   width: 100%;
   display: block;
-  margin: 12px 0 12px 0;
 }
 
 .apod-picture-wrapper {

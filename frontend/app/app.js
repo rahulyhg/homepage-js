@@ -9,6 +9,7 @@ import uiRouter from '../node_modules/angular-ui-router';
 import ngAria from '../node_modules/angular-aria';
 import ngCookies from '../node_modules/angular-cookies';
 import ngMessages from '../node_modules/angular-messages';
+import 'matchmedia-ng';
 
 import appController from './app.controller.js';
 import configuration from './app.config.js';
@@ -30,9 +31,11 @@ angular.module('homepage', [
     ngAnimate,
     ngRoute,
     uiRouter,
+    ngAria,
     ngCookies,
     ngMessages,
-    ngAria,
+    'matchmedia-ng',
+    appController,
     searchBar,
     apod,
     epic,
@@ -41,7 +44,6 @@ angular.module('homepage', [
     epicModal,
     ApiService,
     AppConstants,
-    focusOn,
-    appController
+    focusOn
 ])
   .config(configuration);

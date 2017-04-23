@@ -8,7 +8,7 @@
     <p class="apod-invalid-video" ng-show="vm.apod.invalidVideo">Today's APOD is actually a video from an untrusted source. Please check back tomorrow!</p>
   </div>
 </div>
-<apod-modal apod-modal-shown="vm.apodModalShown" apod-modal-focus="vm.apodModalFocus" apod-last-focus="vm.apodLastFocus">
+<apod-modal apod-modal-shown="vm.apodModalShown" apod-modal-focus="vm.apodModalFocus" apod-last-focus="vm.apodLastFocus" device="vm.device">
   <div class="apod-modal-date">{{vm.apod.date}}</div>
 
   <div class="apod-modal-picture-wrapper-wrapper">
