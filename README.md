@@ -1,12 +1,14 @@
 # My own personal homepage
 
-I created this web application to replace iGoogle, which I really enjoyed using but haven't quite found a replacement for. It is currently hosted at [ckeele.com](http://ckeele.com). 
+I created this web application to replace iGoogle, which I really enjoyed using but haven't quite found a replacement for. 
+
+It is currently hosted at [ckeele.com](http://ckeele.com). 
 
 ### Features
 
-The site has a Google search bar and shows [NASA's Astronomy Picture of the Day](https://apod.nasa.gov/), as well as a randomly selected image of Earth from a recent day, taken by [NASA's Earth Polychromatic Imaging Camera](https://epic.gsfc.nasa.gov/).  
+The site has a Google search bar and shows [NASA's Astronomy Picture of the Day](https://apod.nasa.gov/), as well as a randomly selected image of Earth from a recent day, taken by [NASA's Earth Polychromatic Imaging Camera](https://epic.gsfc.nasa.gov/). This camera sits aboard the Deep Space Climate Observatory, which orbits Earth at the Sun-Earth L<sub>1</sub> Lagrangian point. 
 
-There is also a section for the local weather conditions for all U.S. zip codes, provided by [Weather Underground](https://www.wunderground.com). This section includes the forecast for the following week, the current day's rise and set times for both sun and moon, and the phase of the moon. 
+There is also a section for the local weather conditions for all U.S. zip codes, provided by [Weather Underground](https://www.wunderground.com). Included here are the forecast for the following week, the current day's rise and set times for both the sun and the moon, and the phase and illumination of the moon. 
 
 ### Technologies Used
 
