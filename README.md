@@ -10,7 +10,9 @@ There is also a section for the local weather conditions for all U.S. zip codes,
 
 ### Technologies Used
 
-The site uses AngularJS version 1.6.2, which interacts with an API done with Lumen by Laravel. It is optimized for both mobile devices and desktops. I have created all stylesheets from scratch, rather than using Bootstrap. 
+The site uses AngularJS version 1.6.2, which interacts with an API done with Lumen by Laravel. The views are optimized for both mobile devices and desktops. I have created all stylesheets from scratch, rather than using Bootstrap. 
+
+All of the content of the site is retrieved from external APIs using the Guzzle HTTP client for PHP.
 
 ### Accessibility 
 
