@@ -8,8 +8,7 @@ function apodModal() {
     bindToController: {
       apodModalShown: '=',
       apodModalFocus: '=',
-      apodLastFocus: '=',
-      device: '='
+      apodLastFocus: '='
     },
     scope: {},
     transclude: true,

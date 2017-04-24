@@ -4,7 +4,7 @@
     <img class="epic-picture" ng-src="{{vm.epic.natImgUrl}}" alt="Recent Picture of Earth" ng-click="vm.toggleEpicModal()" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
   </div>
 </div>
-<epic-modal epic-modal-shown="vm.epicModalShown" epic-modal-focus="vm.epicModalFocus" epic-last-focus="vm.epicLastFocus" device="vm.device">
+<epic-modal epic-modal-shown="vm.epicModalShown" epic-modal-focus="vm.epicModalFocus" epic-last-focus="vm.epicLastFocus">
   <div class="epic-modal-date">{{vm.epic.date}}</div>
   <div class="epic-modal-picture-wrapper-wrapper">
     <div class="epic-modal-picture-wrapper">

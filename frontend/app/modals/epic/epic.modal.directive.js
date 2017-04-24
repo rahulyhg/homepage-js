@@ -8,8 +8,7 @@ function epicModal() {
     bindToController: {
       epicModalShown: '=',
       epicModalFocus: '=',
-      epicLastFocus: '=',
-      device: '='
+      epicLastFocus: '='
     },
     scope: {},
     transclude: true,
