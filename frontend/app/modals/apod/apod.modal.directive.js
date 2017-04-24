@@ -19,9 +19,9 @@ function apodModal() {
   }
 }
 
-apodModalController.$inject = ['$rootScope'];
+apodModalController.$inject = ['$scope', 'GlobalService'];
 
-function apodModalController($rootScope) {
+function apodModalController($scope, GlobalService) {
   var vm = this;
 
   vm.hideApodModal = hideApodModal;
@@ -29,27 +29,22 @@ function apodModalController($rootScope) {
 
   function hideApodModal() {
 
-    if (vm.device === 'mobile') {
-      $rootScope.mobileLogoTabIndex = 0;
-      $rootScope.tabletLogoTabIndex = -1;
-      $rootScope.desktopLogoTabIndex = -1;
+    if ($scope.$parent.$parent.device === 'mobile') {
+      $scope.$parent.$parent.logoIndices = GlobalService.mobileLogoIndex();
     }
 
-    if (vm.device === 'tablet') {
-      $rootScope.mobileLogoTabIndex = -1;
-      $rootScope.tabletLogoTabIndex = 0;
-      $rootScope.desktopLogoTabIndex = -1;
+    if ($scope.$parent.$parent.device === 'tablet') {
+      $scope.$parent.$parent.logoIndices = GlobalService.tabletLogoIndex();
     }
 
-    if (vm.device === 'desktop') {
-      $rootScope.mobileLogoTabIndex = -1;
-      $rootScope.tabletLogoTabIndex = -1;
-      $rootScope.desktopLogoTabIndex = 0;
+    if ($scope.$parent.$parent.device === 'desktop') {
+      $scope.$parent.$parent.logoIndices = GlobalService.desktopLogoIndex();
     }
 
-    $rootScope.modalOpen = false;
-    $rootScope.tabIndex = 0;
-    $rootScope.modalTabIndex = -1;
+    $scope.$parent.$parent.modalOpen = false;
+    $scope.$parent.$parent.tabIndex = 0;
+    $scope.$parent.$parent.modalTabIndex = -1;
+
     vm.apodModalShown = false;
     vm.apodModalFocus = false;
     vm.apodLastFocus.focus();

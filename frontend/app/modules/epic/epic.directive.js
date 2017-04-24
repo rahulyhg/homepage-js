@@ -13,9 +13,9 @@ function epic() {
   }
 }
 
-epicController.$inject = ['$http', 'ApiService', '$rootScope'];
+epicController.$inject = ['$http', 'ApiService', 'GlobalService', '$scope'];
 
-function epicController($http, ApiService, $rootScope) {
+function epicController($http, ApiService, GlobalService, $scope) {
   var vm = this;
 
   vm.type = {};
@@ -29,24 +29,11 @@ function epicController($http, ApiService, $rootScope) {
 
   function toggleEpicModal() {
 
-    if ($rootScope.mobileLogoTabIndex === 0) {
-      vm.device = 'mobile';
-    }
+    $scope.$parent.modalOpen = true;
+    $scope.$parent.tabIndex = -1;
+    $scope.$parent.modalTabIndex = 0;
+    $scope.$parent.logoIndices = GlobalService.modalOpenLogoIndex();
 
-    if ($rootScope.tabletLogoTabIndex === 0) {
-      vm.device = 'tablet';
-    }
-
-    if ($rootScope.desktopLogoTabIndex === 0) {
-      vm.device = 'desktop';
-    }
-
-    $rootScope.modalOpen = true;
-    $rootScope.tabIndex = -1;
-    $rootScope.modalTabIndex = 0;
-    $rootScope.mobileLogoTabIndex = -1;
-    $rootScope.tabletLogoTabIndex = -1;
-    $rootScope.desktopLogoTabIndex = -1;
     vm.epicModalShown = !vm.epicModalShown;
     vm.epicModalFocus = !vm.epicModalFocus;
     vm.epicLastFocus = document.activeElement;

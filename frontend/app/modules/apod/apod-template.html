@@ -1,9 +1,9 @@
-<div aria-hidden="{{$root.modalOpen}}" class="apod-wrapper">
+<div aria-hidden="{{$parent.modalOpen}}" class="apod-wrapper">
   <div class="apod-title"><h3>{{vm.title}}</h3></div>
   <div class="apod-picture-wrapper">
-    <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" alt="Astronomy Picture of the Day" ng-click="vm.toggleApodModal()" ng-show="vm.apod.imgUrl && !vm.apod.invalidVideo" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$root.tabIndex}}"></img>
+    <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" alt="Astronomy Picture of the Day" ng-click="vm.toggleApodModal()" ng-show="vm.apod.imgUrl && !vm.apod.invalidVideo" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
 
-    <img class="apod-picture" ng-src="{{vm.apod.thumbUrl}}" alt="Astronomy Picture of the Day" ng-click="vm.toggleApodModal()" ng-show="vm.apod.thumbUrl && !vm.apod.invalidVideo" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$root.tabIndex}}"></img>
+    <img class="apod-picture" ng-src="{{vm.apod.thumbUrl}}" alt="Astronomy Picture of the Day" ng-click="vm.toggleApodModal()" ng-show="vm.apod.thumbUrl && !vm.apod.invalidVideo" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
 
     <p class="apod-invalid-video" ng-show="vm.apod.invalidVideo">Today's APOD is actually a video from an untrusted source. Please check back tomorrow!</p>
   </div>

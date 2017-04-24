@@ -1,4 +1,4 @@
-<div aria-hidden="{{$root.modalOpen}}">
+<div aria-hidden="{{$parent.modalOpen}}">
   <div id="weather-shown">
     <div ng-show="vm.showWeather">
       <div id="weather-wrapper">
@@ -6,7 +6,7 @@
           <div class="weather-astronomy-left col-7 col-t-7">
             <div class="weather-title">
               <p>
-                {{vm.weather.cityState}} {{vm.cachedZipCode}} <a ng-click="vm.resetZip()" tabIndex="{{$root.tabIndex}}" ng-keypress="vm.spaceEnterReset($event)" focus-on="vm.showWeather && !vm.initialPageLoad"><small>[reset]</small></a><br/>
+                {{vm.weather.cityState}} {{vm.cachedZipCode}} <a ng-click="vm.resetZip()" tabIndex="{{$parent.tabIndex}}" ng-keypress="vm.spaceEnterReset($event)" focus-on="vm.showWeather && !vm.initialPageLoad"><small>[reset]</small></a><br/>
                 Weather Station ID: {{vm.weather.station}}<br/>
                 {{vm.weather.time}}
               </p>
@@ -14,7 +14,7 @@
             <div id="weather-now">
               <p ng-show="vm.tempF">
                 <img ng-src="{{vm.weather.weatherNowIcon}}" alt="{{vm.weather.weatherNow}}" title="{{vm.weather.weatherNow}}" class="weather-icon">
-                <strong>{{vm.weather.tempNowF}}</strong>&nbsp;&nbsp;<sup>o</sup><b>F</b> | <sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change" tabIndex="{{$root.tabIndex}}" ng-keypress="vm.spaceEnter($event)" focus-on="vm.tempF && vm.tempChanged">C</a>
+                <strong>{{vm.weather.tempNowF}}</strong>&nbsp;&nbsp;<sup>o</sup><b>F</b> | <sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change" tabIndex="{{$parent.tabIndex}}" ng-keypress="vm.spaceEnter($event)" focus-on="vm.tempF && vm.tempChanged">C</a>
                 <br/>
                 <text ng-show="vm.weather.precipTodayInch">Precipitation: {{vm.weather.precipTodayInch}} inches.</text>
                 <br/>
@@ -23,7 +23,7 @@
                 Wind: {{vm.weather.windMph}} mph {{vm.weather.windDir}}
               </p>
               <p ng-show="!vm.tempF">
-                <img ng-src="{{vm.weather.weatherNowIcon}}" alt="{{vm.weather.weatherNow}}" title="{{vm.weather.weatherNow}}" class="weather-icon"> <strong>{{vm.weather.tempNowC}}</strong>&nbsp;&nbsp;<sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change" tabIndex="{{$root.tabIndex}}" ng-keypress="vm.spaceEnter($event)" focus-on="!vm.tempF">F</a> | <sup>o</sup><b>C</b>
+                <img ng-src="{{vm.weather.weatherNowIcon}}" alt="{{vm.weather.weatherNow}}" title="{{vm.weather.weatherNow}}" class="weather-icon"> <strong>{{vm.weather.tempNowC}}</strong>&nbsp;&nbsp;<sup>o</sup><a ng-click="vm.tempChange()" class="weather-temp-change" tabIndex="{{$parent.tabIndex}}" ng-keypress="vm.spaceEnter($event)" focus-on="!vm.tempF">F</a> | <sup>o</sup><b>C</b>
                 <br/>
                 <text ng-show="vm.weather.precipTodayMm">Precipitation: {{vm.weather.precipTodayMm}} millimeters.</text>
                 <br/>
@@ -75,9 +75,9 @@
 
           </div>
           <div class="weather-trademark col-4 col-t-12">
-            <a href="https://www.wunderground.com/" tabIndex="{{$root.mobileLogoTabIndex}}"><img ng-src="../content/static/wu_logo_horiz.jpg" alt="Weather Underground" title="Weather Underground" class="mobile"></a>
-            <a href="https://www.wunderground.com/" tabIndex="{{$root.tabletLogoTabIndex}}"><img ng-src="../content/static/wu_logo_horiz.jpg" alt="Weather Underground" title="Weather Underground" class="tablet"></a>
-            <a href="https://www.wunderground.com/" tabIndex="{{$root.desktopLogoTabIndex}}"><img ng-src="../content/static/wu_logo_stacked.jpg" alt="Weather Underground" title="Weather Underground" class="desktop"></a>
+            <a href="https://www.wunderground.com/" tabIndex="{{$parent.logoIndices.mobileLogoTabIndex}}"><img ng-src="../content/static/wu_logo_horiz.jpg" alt="Weather Underground" title="Weather Underground" class="mobile"></a>
+            <a href="https://www.wunderground.com/" tabIndex="{{$parent.logoIndices.tabletLogoTabIndex}}"><img ng-src="../content/static/wu_logo_horiz.jpg" alt="Weather Underground" title="Weather Underground" class="tablet"></a>
+            <a href="https://www.wunderground.com/" tabIndex="{{$parent.logoIndices.desktopLogoTabIndex}}"><img ng-src="../content/static/wu_logo_stacked.jpg" alt="Weather Underground" title="Weather Underground" class="desktop"></a>
           </div>
         </div>
       </div>
@@ -90,9 +90,9 @@
         <p>Get your local weather forecast!</p>
         <form name="infoForm" ng-submit="vm.enterZipCode(infoForm)" novalidate>
 
-          <input type="number" name="zip" size="9" class="no-spinners" ng-model="vm.userZipCode" min="1" max="100000000" ng-minlength="5" ng-maxlength="5" placeholder="Enter zip code" required aria-required="true" tabIndex="{{$root.tabIndex}}" focus-on="vm.resetZipTrue">
+          <input type="number" name="zip" size="9" class="no-spinners" ng-model="vm.userZipCode" min="1" max="100000000" ng-minlength="5" ng-maxlength="5" placeholder="Enter zip code" required aria-required="true" tabIndex="{{$parent.tabIndex}}" focus-on="vm.resetZipTrue">
 
-          <button type="submit" tabIndex="{{$root.tabIndex}}" ng-disabled="!infoForm.$valid"><small>Submit Zip</small></button>
+          <button type="submit" tabIndex="{{$parent.tabIndex}}" ng-disabled="!infoForm.$valid"><small>Submit Zip</small></button>
 
           <div ng-messages="infoForm.$error" ng-if="infoForm.$dirty" role="alert" class="weather-error">
             <div ng-message="min">

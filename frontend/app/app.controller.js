@@ -2,16 +2,33 @@
 
 import angular from 'angular';
 
-appController.$inject = ['$http', '$rootScope'];
+appController.$inject = ['$scope', 'matchmedia', 'GlobalService'];
 
-function appController($http, $rootScope) {
-  $rootScope.tabIndex = 0;
-  $rootScope.modalTabIndex = -1;
-  $rootScope.modalOpen = false;
-  $rootScope.mobileLogoTabIndex = -1;
-  $rootScope.tabletLogoTabIndex = -1;
-  $rootScope.desktopLogoTabIndex = -1;
+function appController($scope, matchmedia, GlobalService) {
+  $scope.tabIndex = 0;
+  $scope.modalTabIndex = -1;
+  $scope.modalOpen = false;
 
+  matchmedia.on('(max-width: 600px)', function(mediaQueryList){
+    if (mediaQueryList.matches) {
+      $scope.logoIndices = GlobalService.mobileLogoIndex();
+      $scope.device = 'mobile';
+    }
+  })
+
+  matchmedia.on('(min-width: 600px) and (max-width: 768px)', function(mediaQueryList){
+    if (mediaQueryList.matches) {
+      $scope.logoIndices = GlobalService.tabletLogoIndex();
+      $scope.device = 'tablet';
+    }
+  })
+
+  matchmedia.on('(min-width: 768px)', function(mediaQueryList){
+    if (mediaQueryList.matches) {
+      $scope.logoIndices = GlobalService.desktopLogoIndex();
+      $scope.device = 'desktop';
+    }
+  })
 }
 
 export default angular.module('homepage.appController', [

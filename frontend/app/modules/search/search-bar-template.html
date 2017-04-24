@@ -1,6 +1,6 @@
-<div class="search-bar-html" aria-hidden="{{$root.modalOpen}}">
+<div class="search-bar-html" aria-hidden="{{$parent.modalOpen}}">
   <form method="get" action="https://www.google.com/search">
-    <input type="text" name="q" size="25" value="" tabIndex="{{$root.tabIndex}}"></input>
-    <button type="submit" tabIndex="{{$root.tabIndex}}"><small>{{vm.message1}}</small></button>
+    <input type="text" name="q" size="25" value="" tabIndex="{{$parent.tabIndex}}"></input>
+    <button type="submit" tabIndex="{{$parent.tabIndex}}"><small>{{vm.message1}}</small></button>
   </form>
 </div>

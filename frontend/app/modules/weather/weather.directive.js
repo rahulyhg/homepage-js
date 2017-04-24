@@ -13,9 +13,9 @@ function weather() {
   }
 }
 
-weatherController.$inject = ['$cookies', 'ApiService', '$http', 'AppConstants', '$rootScope', 'matchmedia'];
+weatherController.$inject = ['$cookies', 'ApiService', '$http', 'AppConstants', '$scope'];
 
-function weatherController($cookies, ApiService, $http, AppConstants, $rootScope, matchmedia) {
+function weatherController($cookies, ApiService, $http, AppConstants, $scope) {
   var vm = this;
 
   vm.showInput = true;
@@ -48,7 +48,6 @@ function weatherController($cookies, ApiService, $http, AppConstants, $rootScope
     ApiService.weather(vm.cachedZipCode).then(function(response) {
       vm.weather = response.data;
     });
-
   }
 
   function enterZipCode(infoForm) {
@@ -78,7 +77,6 @@ function weatherController($cookies, ApiService, $http, AppConstants, $rootScope
       vm.zipValue = infoForm.zip.$modelValue;
       vm.zipError = true;
     }
-
   }
 
   function spaceEnter(event) {
@@ -106,53 +104,6 @@ function weatherController($cookies, ApiService, $http, AppConstants, $rootScope
     delete vm.userZipCodeString;
     $cookies.remove('zipCode');
   }
-
-
-  vm.phone = matchmedia.is('(max-width: 600px)');
-  if(vm.phone) {
-    $rootScope.mobileLogoTabIndex = 0;
-    $rootScope.tabletLogoTabIndex = -1;
-    $rootScope.desktopLogoTabIndex = -1;
-  }
-
-  matchmedia.on('(max-width: 600px)', function(mediaQueryList){
-    if (mediaQueryList.matches) {
-      $rootScope.mobileLogoTabIndex = 0;
-      $rootScope.tabletLogoTabIndex = -1;
-      $rootScope.desktopLogoTabIndex = -1;
-    }
-  })
-
-  vm.tablet = matchmedia.is('(min-width: 600px) and (max-width: 768px)');
-  if(vm.tablet) {
-    $rootScope.mobileLogoTabIndex = -1;
-    $rootScope.tabletLogoTabIndex = 0;
-    $rootScope.desktopLogoTabIndex = -1;
-  }
-
-  matchmedia.on('(min-width: 600px) and (max-width: 768px)', function(mediaQueryList){
-    if (mediaQueryList.matches) {
-      $rootScope.mobileLogoTabIndex = -1;
-      $rootScope.tabletLogoTabIndex = 0;
-      $rootScope.desktopLogoTabIndex = -1;
-    }
-  })
-
-  vm.desktop = matchmedia.is('(min-width: 768px)');
-  if(vm.desktop) {
-    $rootScope.mobileLogoTabIndex = -1;
-    $rootScope.tabletLogoTabIndex = -1;
-    $rootScope.desktopLogoTabIndex = 0;
-  }
-
-  matchmedia.on('(min-width: 768px)', function(mediaQueryList){
-    if (mediaQueryList.matches) {
-      $rootScope.mobileLogoTabIndex = -1;
-      $rootScope.tabletLogoTabIndex = -1;
-      $rootScope.desktopLogoTabIndex = 0;
-    }
-  })
-
 }
 
 export default angular.module('weather', [

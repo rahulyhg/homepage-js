@@ -12,7 +12,6 @@ import ngMessages from '../node_modules/angular-messages';
 import 'matchmedia-ng';
 
 import appController from './app.controller.js';
-import configuration from './app.config.js';
 
 import searchBar from './modules/search/search-bar.module.js';
 import apod from './modules/apod/apod.module.js';
@@ -22,8 +21,10 @@ import weather from './modules/weather/weather.module.js';
 import apodModal from './modals/apod/apod.modal.module.js';
 import epicModal from './modals/epic/epic.modal.module.js';
 
-import ApiService from './services/api.service.js';
 import AppConstants from './app.constants.js';
+import ApiService from './services/api.service.js';
+import configuration from './app.config.js';
+import GlobalService from './services/global.service.js';
 
 import focusOn from './utils/focus-on.js';
 
@@ -42,8 +43,9 @@ angular.module('homepage', [
     weather,
     apodModal,
     epicModal,
-    ApiService,
     AppConstants,
+    ApiService,
+    GlobalService,
     focusOn
 ])
   .config(configuration);
