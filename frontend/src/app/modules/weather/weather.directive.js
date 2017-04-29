@@ -31,7 +31,8 @@ function weatherController($cookies, ApiService, $http, AppConstants, $scope) {
 
   vm.cachedZipCode = $cookies.get('zipCode');
 
-  $http.get(`${AppConstants.basePath}/content/static/zip-codes.json`).then(function(response) {
+  $http.get(`${AppConstants.basePath}/static/zip-codes.json`).then(function(response) {
+  // $http.get(`${AppConstants.basePath}/content/static/zip-codes.json`).then(function(response) {
     vm.zipCodesJson = response.data;
   }).catch(function(e) {
     console.log("Error: " + e);

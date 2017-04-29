@@ -1,5 +1,7 @@
 'use strict';
 
+configuration.$inject = ['$sceDelegateProvider'];
+
 export default function configuration($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',

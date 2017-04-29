@@ -28,8 +28,6 @@ function epicModalController($scope, GlobalService) {
 
   function hideEpicModal() {
 
-    console.log($scope);
-
     if ($scope.$parent.$parent.device === 'mobile') {
       $scope.$parent.$parent.logoIndices = GlobalService.mobileLogoIndex();
     }

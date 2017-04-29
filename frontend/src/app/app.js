@@ -2,13 +2,13 @@
 
 require('../index.html');
 
-import angular from '../node_modules/angular';
-import ngAnimate from '../node_modules/angular-animate';
-import ngRoute from '../node_modules/angular-route';
-import uiRouter from '../node_modules/angular-ui-router';
-import ngAria from '../node_modules/angular-aria';
-import ngCookies from '../node_modules/angular-cookies';
-import ngMessages from '../node_modules/angular-messages';
+import angular from '../../node_modules/angular';
+import ngAnimate from '../../node_modules/angular-animate';
+import ngRoute from '../../node_modules/angular-route';
+import uiRouter from '../../node_modules/angular-ui-router';
+import ngAria from '../../node_modules/angular-aria';
+import ngCookies from '../../node_modules/angular-cookies';
+import ngMessages from '../../node_modules/angular-messages';
 import 'matchmedia-ng';
 
 import appController from './app.controller.js';
