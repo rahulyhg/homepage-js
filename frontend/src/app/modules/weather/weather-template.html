@@ -90,7 +90,7 @@
         <p>Get your local weather forecast!</p>
         <form name="infoForm" ng-submit="vm.enterZipCode(infoForm)" novalidate>
 
-          <input type="number" name="zip" size="9" class="no-spinners" ng-model="vm.userZipCode" min="1" max="100000000" ng-minlength="5" ng-maxlength="5" placeholder="Enter zip code" required aria-required="true" tabIndex="{{$parent.tabIndex}}" focus-on="vm.resetZipTrue">
+          <input type="number" name="zip" size="15" class="no-spinners" ng-model="vm.userZipCode" min="1" max="100000000" ng-minlength="5" ng-maxlength="5" placeholder="Zip code" required aria-required="true" tabIndex="{{$parent.tabIndex}}" focus-on="vm.resetZipTrue">
 
           <button type="submit" tabIndex="{{$parent.tabIndex}}" ng-disabled="!infoForm.$valid"><small>Submit Zip</small></button>
 

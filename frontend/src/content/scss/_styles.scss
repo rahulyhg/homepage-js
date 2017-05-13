@@ -2,9 +2,17 @@
     box-sizing: border-box;
 }
 
-input, button {
+input {
   padding: 6px 10px;
   margin: 5px 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  padding: 6px 10px;
+  margin: 5px 0px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
 }
 
 small {
@@ -60,6 +68,17 @@ p {
 .module-error {
   text-align: center;
   color: $error-text-color;
+}
+
+.entry-head {
+  display: inline;
+  border-bottom: 1px solid $error-text-color;
+}
+
+.btn:hover {
+  // color: $error-text-color;
+  box-shadow: 1px 1px 4px $error-text-color;
+  // font-weight: bold;
 }
 
 button::-moz-focus-inner {

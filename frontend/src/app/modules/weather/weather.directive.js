@@ -55,8 +55,6 @@ function weatherController($cookies, ApiService, $http, AppConstants, $scope) {
     });
   }
 
-  // console.log($scope);
-
   function enterZipCode(infoForm) {
 
     $http.get(`${AppConstants.basePath}/static/zip-codes.json`).then(function(response) {

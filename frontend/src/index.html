@@ -12,12 +12,12 @@
         <div class="entry-loading" ng-show="entryShown">
           <div class="entry-loading-content col-8 col-t-8" ng-show="entryFade">
           <!-- <div class="entry-loading-content col-t-8 col-8"> -->
-            <h2>My Personal Homepage</h2>
-            <p>This page shows the Astronomy Picture of the Day, as well as a recent picture of Earth taken by the EPIC satellite, which orbits at the Sun-Earth L<sub>1</sub> Lagrange point.</p>
-            <p>Additionally, the page provides the local weather and astronomy forecast for all US zip codes, provided by Weather Underground.</p>
-            <p>If you're curious about what time the moon rises and its illumination on a particular night, give that module a try!</p>
-            <button ng-click="journeyOn()">Journey Onward!</button>
-            <button ng-click="toggleEntryMessage()">Don't show this again</button>
+            <h2 class="entry-head">My Personal Homepage</h2>
+            <p>This page shows the Astronomy Picture of the Day, as well as a recent picture of Earth taken by the EPIC satellite, in orbit at the Sun-Earth L<sub>1</sub> Lagrange point.</p>
+            <p>Additionally, the page provides the local weather and astronomy forecast for all US zip codes, retrieved from Weather Underground's API.</p>
+            <p>If you're curious about what time the moon rises and its illumination this evening, give the weather module a try!</p>
+            <button ng-click="journeyOn()" class="btn">Journey Onward!</button>
+            <button ng-click="toggleEntryMessage()" class="btn">Don't show this again</button>
           </div>
         </div>
       </div>
