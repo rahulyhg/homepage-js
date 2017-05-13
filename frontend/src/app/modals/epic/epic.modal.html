@@ -3,6 +3,6 @@
     <button type="button" class="modal-close" aria-label="Close" ng-click="vm.hideEpicModal()" focus-on="vm.epicModalFocus" ng-keydown="vm.escape($event)" tabIndex="{{$parent.$parent.modalTabIndex}}">X</button>
     <div class="modal-content" ng-transclude></div>
   </div>
-  <div class="modal-overlay" aria-label="Press escape to close" ng-click="vm.hideEpicModal()" ng-keydown="vm.escape($event)">
+  <div class="modal-overlay" aria-label="Press escape to close" ng-click="vm.hideEpicModal()" ng-keydown="vm.escape($event)" tabIndex="{{$parent.$parent.modalTabIndex}}">
   </div>
 </div>

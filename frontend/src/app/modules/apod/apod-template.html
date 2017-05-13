@@ -1,19 +1,31 @@
-<div aria-hidden="{{$parent.modalOpen}}" class="apod-wrapper">
+<div aria-hidden="{{$parent.modalOpen}}" class="apod-wrapper" ng-show="!vm.apodError">
   <div class="apod-title"><h3>{{vm.title}}</h3></div>
   <div class="apod-picture-wrapper">
-    <img class="apod-picture" ng-src="{{vm.apod.imgUrl}}" alt="Astronomy Picture of the Day" ng-click="vm.toggleApodModal()" ng-show="vm.apod.imgUrl && !vm.apod.invalidVideo" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
+    <img class="apod-picture" lazy-img="{{vm.apod.imgUrl}}" image-load="apod" alt="Astronomy Picture of the Day" ng-click="vm.toggleApodModal()" ng-show="vm.apod.imgUrl && !vm.apod.invalidVideo" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
 
-    <img class="apod-picture" ng-src="{{vm.apod.thumbUrl}}" alt="Astronomy Picture of the Day" ng-click="vm.toggleApodModal()" ng-show="vm.apod.thumbUrl && !vm.apod.invalidVideo" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
+    <img class="apod-picture" ng-src="{{vm.apod.thumbUrl}}" image-load="apod" alt="Astronomy Picture of the Day" ng-click="vm.toggleApodModal()" ng-show="vm.apod.thumbUrl && !vm.apod.invalidVideo" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
 
     <p class="apod-invalid-video" ng-show="vm.apod.invalidVideo">Today's APOD is actually a video from an untrusted source. Please check back tomorrow!</p>
   </div>
 </div>
+
+<div ng-show="vm.apodError">
+  <p class="module-error">Error loading Astronomy Picture of the Day. Please reload page!</p>
+</div>
+
+<div id="loading-wrap">
+  <div class="loading" ng-show="vm.inProgress && !$parent.entryShown">
+    <div class="loading-spinner"></div>
+  </div>
+</div>
+
+
 <apod-modal apod-modal-shown="vm.apodModalShown" apod-modal-focus="vm.apodModalFocus" apod-last-focus="vm.apodLastFocus">
   <div class="apod-modal-date">{{vm.apod.date}}</div>
 
   <div class="apod-modal-picture-wrapper-wrapper">
     <div class="apod-modal-picture-wrapper">
-      <img class="apod-picture-modal" ng-src="{{vm.apod.hdUrl}}" alt="Astronomy Picture of the Day" ng-show="vm.apod.imgUrl"></img>
+      <img class="apod-picture-modal" ng-src="{{vm.apod.imgUrl}}" alt="Astronomy Picture of the Day" ng-show="vm.apod.imgUrl"></img>
       <div class="apod-description" ng-show="vm.apod.imgUrl">
         <p>{{vm.apod.explanation}}</p>
         <p ng-show="vm.apod.copyright">copyright: {{vm.apod.copyright}}</p>
@@ -33,5 +45,4 @@
       </div>
     </div>
   </div>
-
 </apod-modal>

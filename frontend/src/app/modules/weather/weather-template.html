@@ -75,9 +75,9 @@
 
           </div>
           <div class="weather-trademark col-4 col-t-12">
-            <a href="https://www.wunderground.com/" tabIndex="{{$parent.logoIndices.mobileLogoTabIndex}}"><img ng-src="static/wu_logo_horiz.jpg" alt="Weather Underground" title="Weather Underground" class="mobile"></a>
-            <a href="https://www.wunderground.com/" tabIndex="{{$parent.logoIndices.tabletLogoTabIndex}}"><img ng-src="static/wu_logo_horiz.jpg" alt="Weather Underground" title="Weather Underground" class="tablet"></a>
-            <a href="https://www.wunderground.com/" tabIndex="{{$parent.logoIndices.desktopLogoTabIndex}}"><img ng-src="static/wu_logo_stacked.jpg" alt="Weather Underground" title="Weather Underground" class="desktop"></a>
+            <a href="https://www.wunderground.com/" ng-if="$parent.device == 'mobile' && !$parent.modalOpen"><img ng-src="{{vm.wuHoriz}}" alt="Weather Underground" title="Weather Underground" class="mobile"></img></a>
+            <a href="https://www.wunderground.com/" ng-if="$parent.device == 'tablet' && !$parent.modalOpen"><img ng-src="{{vm.wuHoriz}}" alt="Weather Underground" title="Weather Underground" class="tablet" ></img></a>
+            <a href="https://www.wunderground.com/" ng-if="$parent.device == 'desktop' && !$parent.modalOpen"><img ng-src="{{vm.wuStacked}}" alt="Weather Underground" title="Weather Underground" class="desktop"></img></a>
           </div>
         </div>
       </div>

@@ -1,14 +1,12 @@
 'use strict';
 
-require('../index.html');
-
-import angular from '../../node_modules/angular';
-import ngAnimate from '../../node_modules/angular-animate';
-import ngRoute from '../../node_modules/angular-route';
-import uiRouter from '../../node_modules/angular-ui-router';
-import ngAria from '../../node_modules/angular-aria';
-import ngCookies from '../../node_modules/angular-cookies';
-import ngMessages from '../../node_modules/angular-messages';
+import angular from 'angular';
+import ngAnimate from 'angular-animate';
+import ngRoute from 'angular-route';
+import uiRouter from 'angular-ui-router';
+import ngAria from 'angular-aria';
+import ngCookies from 'angular-cookies';
+import ngMessages from 'angular-messages';
 import 'matchmedia-ng';
 
 import appController from './app.controller.js';
@@ -27,6 +25,7 @@ import configuration from './app.config.js';
 import GlobalService from './services/global.service.js';
 
 import focusOn from './utils/focus-on.js';
+import imageLoad from './utils/image-load.js';
 
 angular.module('homepage', [
     ngAnimate,
@@ -36,6 +35,7 @@ angular.module('homepage', [
     ngCookies,
     ngMessages,
     'matchmedia-ng',
+    'angularLazyImg',
     appController,
     searchBar,
     apod,
@@ -46,6 +46,7 @@ angular.module('homepage', [
     AppConstants,
     ApiService,
     GlobalService,
-    focusOn
+    focusOn,
+    imageLoad
 ])
   .config(configuration);

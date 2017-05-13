@@ -1,9 +1,20 @@
-<div aria-hidden="{{$parent.modalOpen}}" class="epic-wrapper">
+<div aria-hidden="{{$parent.modalOpen}}" class="epic-wrapper" ng-show="!vm.epicError">
   <div class="epic-title"><h3>{{vm.title}}</h3></div>
   <div class="epic-picture-wrapper">
-    <img class="epic-picture" ng-src="{{vm.epic.natImgUrl}}" alt="Recent Picture of Earth" ng-click="vm.toggleEpicModal()" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
+    <img class="epic-picture" ng-src="{{vm.epic.natImgUrl}}" image-load="epic" alt="Recent Picture of Earth" ng-click="vm.toggleEpicModal()" ng-keypress="vm.spaceEnter($event)" tabIndex="{{$parent.tabIndex}}"></img>
   </div>
 </div>
+<div ng-show="vm.epicError">
+  <p class="module-error">Error loading EPIC image. Please reload page!</p>
+</div>
+
+
+<div id="loading-wrap">
+  <div class="loading" ng-show="vm.inProgress && !$parent.entryShown">
+    <div class="loading-spinner"></div>
+  </div>
+</div>
+
 <epic-modal epic-modal-shown="vm.epicModalShown" epic-modal-focus="vm.epicModalFocus" epic-last-focus="vm.epicLastFocus">
   <div class="epic-modal-date">{{vm.epic.date}}</div>
   <div class="epic-modal-picture-wrapper-wrapper">

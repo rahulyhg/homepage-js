@@ -9,23 +9,38 @@ function epic() {
     scope: {},
     template: require('./epic-template.html'),
     controller: epicController,
-    controllerAs: 'vm'
+    controllerAs: 'vm',
   }
 }
 
-epicController.$inject = ['$http', 'ApiService', 'GlobalService', '$scope'];
+epicController.$inject = ['ApiService', 'GlobalService', '$scope', '$timeout'];
 
-function epicController($http, ApiService, GlobalService, $scope) {
+function epicController(ApiService, GlobalService, $scope, $timeout) {
   var vm = this;
 
   vm.type = {};
   vm.title = 'Recent EPIC Picture';
+
+  vm.inProgress = true;
 
   vm.toggleEpicModal = toggleEpicModal;
   vm.spaceEnter = spaceEnter;
   vm.epicModalShown = false;
   vm.epicModalFocus = false;
   vm.epicLastFocus = {};
+  vm.epicError = false;
+
+  vm.timer = $timeout(function() {
+    vm.inProgress = false;
+    vm.epicError = true;
+  }, 5000);
+
+  $scope.$on("epic", function() {
+    $timeout(function() {
+      $timeout.cancel(vm.timer);
+      vm.inProgress = false;
+    }, 100);
+  });
 
   function toggleEpicModal() {
 
@@ -47,6 +62,7 @@ function epicController($http, ApiService, GlobalService, $scope) {
 
   ApiService.epic().then(function(response) {
     vm.epic = response.data;
+
   });
 }
 

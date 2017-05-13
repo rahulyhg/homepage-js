@@ -3,22 +3,48 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans" rel="stylesheet">
     <title>homepage</title>
+
+    <script type="text/ng-template" id="homepage.html">
+
+      <div id="entry-loader">
+        <div class="entry-loading" ng-show="entryShown">
+          <div class="entry-loading-content col-8 col-t-8" ng-show="entryFade">
+          <!-- <div class="entry-loading-content col-t-8 col-8"> -->
+            <h2>My Personal Homepage</h2>
+            <p>This page shows the Astronomy Picture of the Day, as well as a recent picture of Earth taken by the EPIC satellite, which orbits at the Sun-Earth L<sub>1</sub> Lagrange point.</p>
+            <p>Additionally, the page provides the local weather and astronomy forecast for all US zip codes, provided by Weather Underground.</p>
+            <p>If you're curious about what time the moon rises and its illumination on a particular night, give that module a try!</p>
+            <button ng-click="journeyOn()">Journey Onward!</button>
+            <button ng-click="toggleEntryMessage()">Don't show this again</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-bar search-bar-l search-bar-t col-12 col-t-12">
+        <search-bar></search-bar>
+      </div>
+      <div class="epic epic-d epic-l epic-t col-6 col-t-6">
+        <epic></epic>
+      </div>
+      <div class="apod apod-d apod-l apod-t col-6 col-t-6">
+        <apod></apod>
+      </div>
+      <div class="weather weather-d weather-l weather-t col-12 col-t-12">
+        <weather></weather>
+      </div>
+
+    </script>
+
   </head>
 
-  <body ng-controller="appController">
-    <div class="search-bar search-bar-l search-bar-t col-12 col-t-12">
-      <search-bar></search-bar>
-    </div>
-    <div class="epic epic-d epic-l epic-t col-6 col-t-6">
-      <epic></epic>
-    </div>
-    <div class="apod apod-d apod-l apod-t col-6 col-t-6">
-      <apod></apod>
-    </div>
-    <div class="weather weather-d weather-l weather-t col-12 col-t-12">
-      <weather></weather>
-    </div>
+  <ng-include src="'homepage.html'"></ng-include>
+
+  <body ng-controller="appController" lazy-img-container>
+
+
+
   </body>
 
 </html>

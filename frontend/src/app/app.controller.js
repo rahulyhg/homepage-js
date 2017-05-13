@@ -2,12 +2,36 @@
 
 import angular from 'angular';
 
-appController.$inject = ['$scope', 'matchmedia', 'GlobalService'];
+appController.$inject = ['$scope', 'matchmedia', 'GlobalService', '$cookies', '$timeout'];
 
-function appController($scope, matchmedia, GlobalService) {
+function appController($scope, matchmedia, GlobalService, $cookies, $timeout) {
   $scope.tabIndex = 0;
   $scope.modalTabIndex = -1;
   $scope.modalOpen = false;
+
+  $scope.entryFade = false;
+  $scope.entryShown = true;
+
+  $timeout(function() {
+    $scope.entryFade = true;
+  }, 100);
+
+  $scope.journeyOn = journeyOn;
+  $scope.toggleEntryMessage = toggleEntryMessage;
+
+  $scope.cachedHideEntry = $cookies.get('hideEntry');
+
+  if ($scope.cachedHideEntry) {
+    $scope.entryShown = false;
+  }
+
+  function journeyOn() {
+    $scope.entryShown = false;
+  }
+
+  function toggleEntryMessage() {
+    $cookies.put('hideEntry', true);
+  }
 
   matchmedia.on('(max-width: 600px)', function(mediaQueryList){
     if (mediaQueryList.matches) {

@@ -13,18 +13,33 @@ function apod() {
   }
 }
 
-apodController.$inject = ['ApiService', 'GlobalService', '$scope'];
+apodController.$inject = ['ApiService', 'GlobalService', '$scope', '$timeout'];
 
-function apodController(ApiService, GlobalService, $scope) {
+function apodController(ApiService, GlobalService, $scope, $timeout) {
   var vm = this;
 
   vm.title = 'Astronomy Picture of the Day';
+
+  vm.inProgress = true;
 
   vm.toggleApodModal = toggleApodModal;
   vm.spaceEnter = spaceEnter;
   vm.apodModalShown = false;
   vm.apodModalFocus = false;
   vm.apodLastFocus = {};
+  vm.apodError = false;
+
+  vm.timer = $timeout(function() {
+    vm.inProgress = false;
+    vm.apodError = true;
+  }, 5000);
+
+  $scope.$on("apod", function() {
+    $timeout(function() {
+      $timeout.cancel(vm.timer);
+      vm.inProgress = false;
+    }, 100);
+  });
 
   function toggleApodModal() {
 
@@ -50,6 +65,7 @@ function apodController(ApiService, GlobalService, $scope) {
     if (vm.apod.vidUrl) {
       vm.title = 'Astronomy Video of the Day';
     }
+
   });
 }
 

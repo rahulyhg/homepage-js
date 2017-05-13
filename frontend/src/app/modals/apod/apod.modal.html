@@ -1,9 +1,9 @@
-<div ng-show="vm.apodModalShown" aria-hidden="{{!$parent.$parent.modalOpen}}">
+<div ng-if="vm.apodModalShown" aria-hidden="{{!$parent.$parent.modalOpen}}">
   <div class="modal-dialog" ng-keydown="vm.escape($event)">
     <button type="button" class="modal-close" aria-label="Close" ng-click="vm.hideApodModal()" focus-on="vm.apodModalFocus" ng-keydown="vm.escape($event)" tabIndex="{{$parent.$parent.modalTabIndex}}">X</button>
     <div class="modal-content" ng-transclude></div>
     <div class="modal-dialog-bottom"></div>
   </div>
-  <div class="modal-overlay" aria-label="Press escape to close" ng-click="vm.hideApodModal()" ng-keydown="vm.escape($event)">
+  <div class="modal-overlay" aria-label="Press escape to close" ng-click="vm.hideApodModal()" ng-keydown="vm.escape($event)" tabIndex="{{$parent.$parent.modalTabIndex}}">
   </div>
 </div>

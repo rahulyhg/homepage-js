@@ -29,14 +29,15 @@ function weatherController($cookies, ApiService, $http, AppConstants, $scope) {
   vm.spaceEnterReset = spaceEnterReset;
   vm.tabIndex = 0;
 
+// console.log($scope);
+
   vm.cachedZipCode = $cookies.get('zipCode');
 
-  $http.get(`${AppConstants.basePath}/static/zip-codes.json`).then(function(response) {
-  // $http.get(`${AppConstants.basePath}/content/static/zip-codes.json`).then(function(response) {
-    vm.zipCodesJson = response.data;
-  }).catch(function(e) {
-    console.log("Error: " + e);
-  });
+  // $http.get(`${AppConstants.basePath}/static/zip-codes.json`).then(function(response) {
+  //   vm.zipCodesJson = response.data;
+  // }).catch(function(e) {
+  //   console.log("Error: " + e);
+  // });
 
   if ((angular.equals({}, vm.zipCodesJson) )) {
     return
@@ -46,38 +47,54 @@ function weatherController($cookies, ApiService, $http, AppConstants, $scope) {
     vm.showInput = false;
     vm.showWeather = true;
 
+    vm.wuHoriz = "static/wu_logo_horiz.jpg";
+    vm.wuStacked = "static/wu_logo_stacked.jpg";
+
     ApiService.weather(vm.cachedZipCode).then(function(response) {
       vm.weather = response.data;
     });
   }
 
+  // console.log($scope);
+
   function enterZipCode(infoForm) {
-    if (vm.userZipCode < 10000) {
-      vm.userZipCodeString = ("00000" + vm.userZipCode).slice(-5);
-    }
 
-    if (!vm.userZipCodeString) {
-      vm.userZipCodeString = vm.userZipCode.toString();
-    }
+    $http.get(`${AppConstants.basePath}/static/zip-codes.json`).then(function(response) {
+      vm.zipCodesJson = response.data;
 
-    if (vm.zipCodesJson.indexOf(vm.userZipCodeString) > 0) {
-      $cookies.put('zipCode', vm.userZipCodeString);
-      vm.cachedZipCode = vm.userZipCode;
-      vm.showInput = false;
-      vm.showWeather = true;
-      vm.resetZipTrue = false;
-      vm.initialPageLoad = false;
+      if (vm.userZipCode < 10000) {
+        vm.userZipCodeString = ("00000" + vm.userZipCode).slice(-5);
+      }
 
-      ApiService.weather(vm.userZipCodeString).then(function(response) {
-        vm.weather = response.data;
-      });
-    }
+      if (!vm.userZipCodeString) {
+        vm.userZipCodeString = vm.userZipCode.toString();
+      }
 
-    if (vm.zipCodesJson.indexOf(vm.userZipCodeString) == -1) {
-      vm.userZipCodeString = false;
-      vm.zipValue = infoForm.zip.$modelValue;
-      vm.zipError = true;
-    }
+      if (vm.zipCodesJson.indexOf(vm.userZipCodeString) > 0) {
+        $cookies.put('zipCode', vm.userZipCodeString);
+        vm.cachedZipCode = vm.userZipCode;
+        vm.showInput = false;
+        vm.showWeather = true;
+        vm.resetZipTrue = false;
+        vm.initialPageLoad = false;
+
+        vm.wuHoriz = "static/wu_logo_horiz.jpg";
+        vm.wuStacked = "static/wu_logo_stacked.jpg";
+
+        ApiService.weather(vm.userZipCodeString).then(function(response) {
+          vm.weather = response.data;
+        });
+      }
+
+      if (vm.zipCodesJson.indexOf(vm.userZipCodeString) == -1) {
+        vm.userZipCodeString = false;
+        vm.zipValue = infoForm.zip.$modelValue;
+        vm.zipError = true;
+      }
+
+    }).catch(function(e) {
+      console.log("Error: " + e);
+    });
   }
 
   function spaceEnter(event) {
