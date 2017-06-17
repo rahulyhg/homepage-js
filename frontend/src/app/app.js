@@ -2,8 +2,9 @@
 
 import angular from 'angular';
 import ngAnimate from 'angular-animate';
-import ngRoute from 'angular-route';
-import uiRouter from 'angular-ui-router';
+// import ngRoute from 'angular-route';
+// import uiRouter from 'angular-ui-router';
+// import ngGa from 'angular-google-analytics';
 import ngAria from 'angular-aria';
 import ngCookies from 'angular-cookies';
 import ngMessages from 'angular-messages';
@@ -22,6 +23,7 @@ import epicModal from './modals/epic/epic.modal.module.js';
 import AppConstants from './app.constants.js';
 import ApiService from './services/api.service.js';
 import configuration from './app.config.js';
+import run from './app.run.js';
 import GlobalService from './services/global.service.js';
 
 import focusOn from './utils/focus-on.js';
@@ -29,8 +31,9 @@ import imageLoad from './utils/image-load.js';
 
 angular.module('homepage', [
     ngAnimate,
-    ngRoute,
-    uiRouter,
+    // ngGa,
+    // ngRoute,
+    // uiRouter,
     ngAria,
     ngCookies,
     ngMessages,
@@ -49,4 +52,6 @@ angular.module('homepage', [
     focusOn,
     imageLoad
 ])
-  .config(configuration);
+  // .config(configuration);
+  .config(configuration)
+  .run(run);
