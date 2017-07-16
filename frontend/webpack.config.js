@@ -15,24 +15,18 @@ module.exports = {
     },
     output: {
         path: __dirname + "/dist",
+        publicPath: "/homepage",
         filename: "[name].js"
     },
     module: {
-        loaders: [{
-          test: /\.scss$/,
-          loader: "style-loader!css-loader!sass-loader"
-        }, {
-          test: /\.css$/,
-          loader: "style-loader!css-loader"
-        }, {
-          test: /\.html$/,
-          loader: "html-loader?minimize=false"
-        }, {
-          test: /\.jsx?$/, loader: "babel-loader",
-          exclude: /node_modules/
-        }, {
-          test: /\.(png|jpg|jpeg)$/,
-              loader: "url-loader?limit=10000!image-webpack-loader",
+        loaders: [
+          { test: /\.scss$/, loader: ExtractTextPlugin.extract("css-loader!sass-loader") },
+          { test: /\.css$/, loader: ExtractTextPlugin.extract("css-loader") },
+          // { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
+          // { test: /\.css$/, loader: "style-loader!css-loader" },
+          { test: /\.html$/, loader: "html-loader?minimize=false" },
+          { test: /\.jsx?$/, loader: "babel-loader", exclude: /node_modules/ },
+          { test: /\.(png|jpg|jpeg)$/, loader: "url-loader?limit=10000!image-webpack-loader",
               query: {
                 optipng: {
                   optimizationLevel: 1,
@@ -40,20 +34,6 @@ module.exports = {
               },
             },
           ],
-        // rules: [
-        //   {
-        //     test: /\.html$/,
-        //     use: "html-loader"
-        //   },
-        //   {
-        //     test: /\.css$/,
-        //     use: ExtractTextPlugin.extract([ "css-loader" ])
-        //   },
-        //   {
-        //     test: /\.scss$/,
-        //     use: ExtractTextPlugin.extract([ "css-loader", "sass-loader" ])
-        //   },
-        // ],
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json', '.scss']
@@ -74,7 +54,6 @@ module.exports = {
         inject: "body"
       }),
       new CopyWebpackPlugin([
-        // { from: "node_modules/angular-lazy-img/dist/angular-lazy-img.js", to: "." },
         { from: "src/content/static", to: "static" }
       ])
     ]

@@ -29,15 +29,7 @@ function weatherController($cookies, ApiService, $http, AppConstants, $scope) {
   vm.spaceEnterReset = spaceEnterReset;
   vm.tabIndex = 0;
 
-// console.log($scope);
-
   vm.cachedZipCode = $cookies.get('zipCode');
-
-  // $http.get(`${AppConstants.basePath}/static/zip-codes.json`).then(function(response) {
-  //   vm.zipCodesJson = response.data;
-  // }).catch(function(e) {
-  //   console.log("Error: " + e);
-  // });
 
   if ((angular.equals({}, vm.zipCodesJson) )) {
     return
@@ -57,7 +49,7 @@ function weatherController($cookies, ApiService, $http, AppConstants, $scope) {
 
   function enterZipCode(infoForm) {
 
-    $http.get(`${AppConstants.basePath}/static/zip-codes.json`).then(function(response) {
+    $http.get(`${AppConstants.basePath}static/zip-codes.json`).then(function(response) {
       vm.zipCodesJson = response.data;
 
       if (vm.userZipCode < 10000) {

@@ -2,8 +2,8 @@ import angular from 'angular';
 
 function AppConstants() {
   return {
-    baseApiPath: location.protocol + '//' + location.hostname,
-    basePath: location.protocol + '//' + location.host,
+    baseApiPath: `${location.protocol}//${location.hostname}`,
+    basePath: `${location.href}`,
   }
 }
 

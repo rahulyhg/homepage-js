@@ -2,9 +2,6 @@
 
 import angular from 'angular';
 import ngAnimate from 'angular-animate';
-// import ngRoute from 'angular-route';
-// import uiRouter from 'angular-ui-router';
-// import ngGa from 'angular-google-analytics';
 import ngAria from 'angular-aria';
 import ngCookies from 'angular-cookies';
 import ngMessages from 'angular-messages';
@@ -31,9 +28,6 @@ import imageLoad from './utils/image-load.js';
 
 angular.module('homepage', [
     ngAnimate,
-    // ngGa,
-    // ngRoute,
-    // uiRouter,
     ngAria,
     ngCookies,
     ngMessages,
@@ -52,6 +46,5 @@ angular.module('homepage', [
     focusOn,
     imageLoad
 ])
-  // .config(configuration);
   .config(configuration)
   .run(run);
