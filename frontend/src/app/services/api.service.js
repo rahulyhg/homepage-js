@@ -8,6 +8,7 @@ function ApiService($http, AppConstants) {
   return {
     apod: () => {
       return $http.get(`${AppConstants.baseApiPath}/api/v1/apod`);
+    //   return $http.get(`${AppConstants.baseApiPath}/api/v1/apod?date=2017-08-13`);
     },
     epic: () => {
       return $http.get(`${AppConstants.baseApiPath}/api/v1/epic`);

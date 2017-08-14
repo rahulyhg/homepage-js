@@ -2,7 +2,7 @@
 
 I created this web application to replace iGoogle, which I really enjoyed using but haven't quite found a replacement for. 
 
-It is currently hosted at [ckeele.com](http://ckeele.com). 
+It is currently hosted at [ckeele.com/homepage](http://ckeele.com/homepage). 
 
 ### Features
 

@@ -33,13 +33,13 @@
     </div>
   </div>
 
-  <div class="apod-modal-picture-wrapper-wrapper">
+  <div class="apod-modal-video-wrapper-wrapper">
     <div class="apod-modal-video-wrapper">
       <div class="apod-video-modal" ng-show="vm.apod.vidUrl">
         <iframe ng-src="{{vm.apod.vidUrl}}" allowfullscreen frameborder="0"></iframe>
         {{vm.apod.vidUrl}}
       </div>
-      <div class="apod-description" ng-show="vm.apod.vidUrl">
+      <div class="apod-video-description" ng-show="vm.apod.vidUrl">
         <p>{{vm.apod.explanation}}</p>
         <p ng-show="vm.apod.copyright">copyright: {{vm.apod.copyright}}</p>
       </div>

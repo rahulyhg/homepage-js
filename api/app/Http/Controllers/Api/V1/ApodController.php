@@ -28,6 +28,7 @@ class ApodController extends Controller
 
       $apod_api_key = $_ENV['APOD_API_KEY'];
       $apodUrl = 'https://api.nasa.gov/planetary/apod?api_key=' . $apod_api_key;
+    //   $apodUrl = 'https://api.nasa.gov/planetary/apod?api_key=' . $apod_api_key . '&date=' . $request->date
 
       try {
         $response = $client->request('GET', $apodUrl);
