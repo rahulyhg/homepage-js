@@ -32,7 +32,7 @@ function apodController(ApiService, GlobalService, $scope, $timeout) {
   vm.timer = $timeout(function() {
     vm.inProgress = false;
     vm.apodError = true;
-  }, 5000);
+}, 20000);
 
   $scope.$on("apod", function() {
     $timeout(function() {

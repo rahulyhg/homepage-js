@@ -28,7 +28,6 @@ class ApodController extends Controller
 
       $apod_api_key = $_ENV['APOD_API_KEY'];
       $apodUrl = 'https://api.nasa.gov/planetary/apod?api_key=' . $apod_api_key;
-    //   $apodUrl = 'https://api.nasa.gov/planetary/apod?api_key=' . $apod_api_key . '&date=' . $request->date
 
       try {
         $response = $client->request('GET', $apodUrl);
@@ -51,20 +50,36 @@ class ApodController extends Controller
       if ($responseData['media_type'] == 'video') {
 
         $url = $responseData['url'];
-        $ytId = basename(parse_url($url)['path']);
-        $ytUrl = "https://img.youtube.com/vi/" . $ytId . "/hqdefault.jpg";
+
+        $vidHost = parse_url($url)['host'];
+        $vidId = basename(parse_url($url)['path']);
+
+        if ($vidHost == 'www.youtube.com') {
+            $thumbUrl = "https://img.youtube.com/vi/" . $vidId . "/hqdefault.jpg";
+        } elseif ($vidHost == 'player.vimeo.com') {
+
+            $vimUrl = 'http://vimeo.com/api/v2/video/' . $vidId . '.json';
+
+            try {
+              $vimResponse = $client->request('GET', $vimUrl);
+            } catch (\Exception $e) {
+              return "Error";
+            }
+
+            $vimResponseData = json_decode($vimResponse->getBody(), true);
+
+            $thumbUrl = $vimResponseData[0]['thumbnail_large'];
+        } else {
+            $apod['invalidVideo'] = true;
+        }
 
         $apod = [
           'date' => $responseData['date'],
           'explanation' => $responseData['explanation'],
           'vidUrl' => $responseData['url'],
           'title' => $responseData['title'],
-          'thumbUrl' => $ytUrl
+          'thumbUrl' => $thumbUrl
         ];
-
-        if (parse_url($responseData['url'])['host'] != 'www.youtube.com') {
-          $apod['invalidVideo'] = true;
-        }
 
       }
 
